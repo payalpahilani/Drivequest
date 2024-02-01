@@ -1,2 +1,2 @@
 # Drivequest
-Studio practise game projeect
+Studio practice game projeect
