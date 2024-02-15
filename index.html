@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Setup</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <header>
+        <!-- navigation bar -->
+       <nav>
+               
+               <ul class="nav-links">
+                   <li><a href="index.html">Home</a></li>
+                   <li><a href="leadership.html">Leadership Board</a></li>
+                   <li><a href="contactus.html">Contact Us</a></li>
+               </ul>
+       </nav>
+   </header>
+
+        <div class="player-setup">
+            <label for="player1Name">PLAYER 1 NAME: </label>
+            <input type="text" id="player1Name">
+            
+            <div class="color-options">
+                <label for="player1Color">PLAYER 1 COLOR:</label>
+                <span class="color" style="background-color: red;" onclick="selectColor('red')"></span>
+                <span class="color" style="background-color: blue;" onclick="selectColor('blue')"></span>
+                <span class="color" style="background-color: green;" onclick="selectColor('green')"></span>
+            </div>
+        </div>
+
+        <div class="player-setup">
+            <label for="player2Name">PLAYER 2 NAME: </label>
+            <input type="text" id="player2Name">
+
+            <div class="color-options">
+                <label for="player1Color">PLAYER 2 COLOR:</label>
+                <span class="color" style="background-color: red;" onclick="selectColor('red')"></span>
+                <span class="color" style="background-color: blue;" onclick="selectColor('blue')"></span>
+                <span class="color" style="background-color: green;" onclick="selectColor('green')"></span>
+            </div>
+        </div>
+
+    <div> <a href="/grid.html"> let's go</a></div>
+    
+    <script>
+        function selectColor(color) {
+            alert('Selected color: ' + color);
+        }
+    </script>
+</body>
+</html>
