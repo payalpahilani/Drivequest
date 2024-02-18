@@ -4,8 +4,38 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
+    background-color: #6A4C93;
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold;
+  
+}
+/*Player's Info*/
+.player-info-box{
+    height:400px;
+    width:600px;
+    background-color: #8870A9;
+    color:white;
+    border-radius: 4%;
 }
 
+.rounded-input {
+    border: 1px solid #ccc; 
+    border-radius: 10px;
+    padding: 5px;
+    width: 200px; 
+    height: 30px; 
+    
+}
+
+.title-section{
+    background-color: #402862;
+    padding-top: auto;
+    margin:0;
+    padding:10px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
 /* Navigation CSS */
 nav {
     display: flex;
@@ -73,7 +103,6 @@ nav {
 }
 
 .player-setup {
-    border: 2px solid black;
     padding: 20px;
     margin: 10px;
 }
@@ -89,6 +118,7 @@ nav {
     margin-right: 10px;
     margin-top: 5px;
     cursor: pointer;
+    border: 2px solid white; 
 }
 
 /* Styles for the question page*/
