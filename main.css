@@ -48,6 +48,10 @@ nav {
 
 
 /* Grid page css */
+body{
+    background-color: #6A4C93;
+    font-family: Poppins, sans-serif;
+}
 .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 50px);
