@@ -14,16 +14,17 @@
                
                <ul class="nav-links">
                    <li><a href="index.html">Home</a></li>
-                   <li><a href="leadership.html">Leadership Board</a></li>
-                   <li><a href="contactus.html">Contact Us</a></li>
+                   <li><button class="board"><a href="leadership.html">Leadership Board</a></button></li>
+                   <li><button class="rules"><a href="rules.html">Rules</a></button></li>
                </ul>
        </nav>
    </header>
 
     <div class="grid-container-wrapper" id="gridContainerWrapper">
+        <h2>PLAYER 1 SELECT ANY TILE TO BEGIN</h2>
     <div class="grid-container">
 
-        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" alt="Red Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" style="width:100%"alt="Red Question mark"></div>
         <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" alt="Red Question mark"></div>
         <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" alt="Red Question mark"></div>
         <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" alt="Red Question mark"></div>
@@ -52,10 +53,14 @@
         <div class="grid-item" onclick="loadQuestion()"><img src="./assets/green.png" alt="Green Question mark"></div>
         <div class="grid-item" onclick="loadQuestion()"><img src="./assets/green.png" alt="Green Question mark"></div>
         <div class="grid-item" onclick="loadQuestion()"><img src="./assets/green.png" alt="Green Question mark"></div>
-
 
         
     </div>
+    <!--Players Icon-->
+  <div class="score">
+    <img src="./assets/player1.png" style="width:40px" alt="player's icon"> <input type="text" id="player1"style="width:80px"placeholder="Score">
+    <input type="text" id="player2" style="width:80px"placeholder="Score"><img src="./assets/player2.png" style="width:40px" alt="player's icon">
+</div>
 </div>
 
 <div id="questionContainer" style="display: none;"></div>
