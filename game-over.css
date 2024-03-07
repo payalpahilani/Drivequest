@@ -26,11 +26,11 @@ body {
 /* home page decorations */
 
 .game-over img {
-    height: 450px; 
+    height: 400px; 
     width: auto; 
     display:block;
     justify-content: center;
-    margin-left: 30%;
+    margin-left: 33%;
 }
 /* 
 .home-grid img {
@@ -46,14 +46,14 @@ body {
     display: flex;
     justify-content: center;
 
-    color: #D8B7FF;
-    /* text-align: center; */
-
+    color: white;
+   
+    text-align: center;
     margin: 0%;
 
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 90px;
+    font-size: 40px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -75,10 +75,10 @@ body {
 }
 
 button {
-    width: 234px; /* Set the width of the button */
-    height: 87px; /* Set the height of the button */
-    flex-shrink: 0; /* Prevent shrinking */
-    border-radius: 20px; /* Set border radius */ 
+    /* width: 234px; 
+    height: 87px; 
+    flex-shrink: 0; 
+    border-radius: 20px; 
     border-bottom: 13px solid #F5B133; 
     background: #FFCA3A; 
     color: #FFF;
@@ -86,7 +86,14 @@ button {
     font-weight: 700;
 
     margin-top: 3%;
-    margin-left: 40%; 
+    margin-left: 40%;  */
+    width: 328px;
+    height: 73px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border-bottom: 1px solid #FFF;
+    background: #71539A;
+    margin-left: 38%;
 }
 
 
