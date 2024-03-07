@@ -18,37 +18,39 @@ main {
     height: 100vh;
     margin: 0;
     background-color: #6A4C93;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
-  
+
 }
+
 /*Player's Info*/
-.player-info-box{
-    height:400px;
-    width:600px;
+.player-info-box {
+    height: 400px;
+    width: 600px;
     background-color: #8870A9;
-    color:white;
+    color: white;
     border-radius: 4%;
 }
 
 .rounded-input {
-    border: 1px solid #ccc; 
+    border: 1px solid #ccc;
     border-radius: 10px;
     padding: 5px;
-    width: 200px; 
-    height: 30px; 
-    
+    width: 200px;
+    height: 30px;
+
 }
 
-.title-section{
+.title-section {
     background-color: #402862;
     padding-top: auto;
-    margin:0;
-    padding:10px;
+    margin: 0;
+    padding: 10px;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
 }
+
 /* Navigation CSS */
 nav {
     display: flex;
@@ -189,11 +191,15 @@ nav a {
 
 #begin-btn {
     margin-top: 48px;
+    margin-bottom: 105px;
     background-color: #8F9499;
     padding: 14px 104px;
     border-radius: 20px;
     border-bottom: 13px solid #7D8084;
 }
+
+
+
 
 /* Grid page css */
 .grid-container {
@@ -237,7 +243,7 @@ nav a {
     margin-right: 10px;
     margin-top: 5px;
     cursor: pointer;
-    border: 2px solid white; 
+    border: 2px solid white;
 }
 
 /* Styles for the question page*/
@@ -273,4 +279,19 @@ nav a {
 
 .selected {
     background-color: lightblue;
+}
+
+/* Footer*/
+
+#footer-rect {
+    width: 1440px;
+    height: 88px;
+    flex-shrink: 0;
+    background: #432A66;
+}
+
+#volume-btn {
+    display: flex;
+    padding-top: 17px;
+    margin-left: 84px;
 }
