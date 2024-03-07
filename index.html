@@ -41,9 +41,12 @@
                         <div class="color-options">
                             <label for="player1-color">PLAYER 1 COLOR:</label>
                             <span class="color" style="background-color: #FF595E;" onclick="selectColor('red')"></span>
-                <span class="color" style="background-color: #FFCA3A;" onclick="selectColor('yellow')"></span>
-                <span class="color" style="background-color: #6A4C93;" onclick="selectColor('purple')"></span>
-                <span class="color" style="background-color: #63B3E6;" onclick="selectColor('light-blue')"></span>
+                            <span class="color" style="background-color: #FFCA3A;"
+                                onclick="selectColor('yellow')"></span>
+                            <span class="color" style="background-color: #6A4C93;"
+                                onclick="selectColor('purple')"></span>
+                            <span class="color" style="background-color: #63B3E6;"
+                                onclick="selectColor('light-blue')"></span>
                         </div>
                     </div>
                 </div>
@@ -57,9 +60,12 @@
                         <div class="color-options">
                             <label for="player1-color">PLAYER 2 COLOR:</label>
                             <span class="color" style="background-color: #FF59EE;" onclick="selectColor('pink')"></span>
-                            <span class="color" style="background-color: #FFA43A;" onclick="selectColor('orange')"></span>
-                            <span class="color" style="background-color: #8AC926;" onclick="selectColor('green')"></span>
-                            <span class="color" style="background-color: #1982C4;" onclick="selectColor('dark-blue')"></span>
+                            <span class="color" style="background-color: #FFA43A;"
+                                onclick="selectColor('orange')"></span>
+                            <span class="color" style="background-color: #8AC926;"
+                                onclick="selectColor('green')"></span>
+                            <span class="color" style="background-color: #1982C4;"
+                                onclick="selectColor('dark-blue')"></span>
                         </div>
                     </div>
                 </div>
@@ -70,12 +76,20 @@
 
         <script>
             function selectColor(color) {
-                alert('Selected color: ' + color);
+                //alert('Selected color: ' + color);
                 const selectedColor = document.querySelector(`.color[onclick="selectColor('${color}')"]`);
                 selectedColor.innerHTML = '&#10003;';
             }
         </script>
     </main>
 </body>
+<footer>
+    <div id="footer-rect">
+        <div id="volume-btn">
+            <img src="./assets/volume.png" alt="volume button">
+        </div>
+
+    </div>
+</footer>
 
 </html>
