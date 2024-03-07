@@ -53,8 +53,7 @@ main {
 nav {
     display: flex;
     justify-content: space-between;
-    /* align-items: center;
-    padding: 10px; */
+    padding: 20px;
     /* position: fixed;
     top: 0;
     left: 0; */
@@ -195,30 +194,53 @@ nav a {
     border-bottom: 13px solid #7D8084;
 }
 
+
 /* Grid page css */
 .grid-container {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(5, 50px);
     grid-template-rows: repeat(5, 50px);
-    grid-gap: 10px;
-    /* Adjust the gap size as needed */
+    grid-gap: 10px; /* Adjust the gap size as needed */
 }
 
 .grid-item {
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    border-radius:15%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-size: 1.2em;
+    background-color: #6A4C93;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.grid-item:hover {
+    background-color: #D8B7FF;
+    cursor: pointer;
+}
+h2{
+    color:#D8B7FF;
+    font-size:1.15em;
 }
 
+.score img:first-child{
+   margin-top :10px;
+   margin-left: 20px;
+}
 
+#player2 {
+    margin-right:5px;
+    margin-left: 20px;
+
+}
 .player-setup-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .player-setup {
@@ -240,7 +262,7 @@ nav a {
     border: 2px solid white; 
 }
 
-/* Styles for the question page*/
+/* Styles for the question page */
 .question-container {
     width: 80%;
     display: flex;
@@ -274,3 +296,16 @@ nav a {
 .selected {
     background-color: lightblue;
 }
+
+/* Testing Submit button css */
+#submitBtn {
+    margin-top: 48px;
+    background-color: #8F9499;
+    padding: 14px 104px;
+    border-radius: 20px;
+    border-bottom: 13px solid #7D8084;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: block;
+}
+

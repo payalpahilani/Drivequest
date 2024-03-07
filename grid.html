@@ -10,51 +10,60 @@
 <body>
     <header>
         <!-- navigation bar -->
-       <nav>
-               
-               <ul class="nav-links">
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="leadership.html">Leadership Board</a></li>
-                   <li><a href="contactus.html">Contact Us</a></li>
-               </ul>
-       </nav>
-   </header>
+        <nav>
+            <!-- <ul class="nav-links"> -->
+            <div id="logo-container">
+                <a id="home" href="index.html">Home</a>
+            </div>
+            <div id="right-links">
+                <a id="rules" href="rules.html">Rules</a>
+                <a id="leadership" href="leadership.html">Leadership Board</a>
+            </div>
+            <!-- </ul> -->
+        </nav>
+    </header>
 
     <div class="grid-container-wrapper" id="gridContainerWrapper">
+        <h2>PLAYER 1 SELECT ANY TILE TO BEGIN</h2>
     <div class="grid-container">
 
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" style="width:80%"alt="Red Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" style="width:80%"alt="Red Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" style="width:80%"alt="Red Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png"style="width:80%" alt="Red Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png"style="width:80%" alt="Red Question mark"></div>
 
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" style="width:80%"alt="Red Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" style="width:80%"alt="Red Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" style="width:80%"alt="Red Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" style="width:80%"alt="Red Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/_.png" style="width:80%"alt="Red Question mark"></div>
 
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png" style="width:80%"alt="Yellow Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png" style="width:80%"alt="Yellow Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png"style="width:80%" alt="Yellow Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png" style="width:80%"alt="Yellow Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png"style="width:80%" alt="Yellow Question mark"></div>
 
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
-        <div class="grid-item" onclick="loadQuestion()"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png"style="width:80%"alt="Yellow Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png" style="width:80%"alt="Yellow Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png" style="width:80%"alt="Yellow Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png" style="width:80%"alt="Yellow Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/yellow.png" style="width:80%"alt="Yellow Question mark"></div>
+        
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/green.png" style="width:80%"alt="Green Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/green.png" style="width:80%"alt="Green Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/green.png"style="width:80%" alt="Green Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/green.png" style="width:80%"alt="Green Question mark"></div>
+        <div class="grid-item" onclick="loadQuestion()"><img src="./assets/green.png" style="width:80%"alt="Green Question mark"></div>
 
         
     </div>
+    <!--Players Icon-->
+  <div class="score">
+    <img src="./assets/player1.png" style="width:40px" alt="player's icon"> <input type="text" id="player1"style="width:80px"placeholder="Score">
+    <input type="text" id="player2" style="width:80px"placeholder="Score"><img src="./assets/player2.png" style="width:40px" alt="player's icon">
+</div>
 </div>
 
 <div id="questionContainer" style="display: none;"></div>
