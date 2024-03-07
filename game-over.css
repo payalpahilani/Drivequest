@@ -8,12 +8,9 @@
 }
 
 body {
-    /* background-image: url(./assets/Background_03.png); 
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;  */
+
     background-color: #6A4C93;
-    overflow:hidden;
+
 
 }
 
@@ -28,11 +25,12 @@ body {
 
 /* home page decorations */
 
-.maple-leaf img {
-    height: 150px; 
+.game-over img {
+    height: 450px; 
     width: auto; 
     display:block;
     justify-content: center;
+    margin-left: 30%;
 }
 /* 
 .home-grid img {
