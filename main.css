@@ -1,55 +1,207 @@
 body {
     display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+    height: 100vh;
+    margin: 0;
+    background-color: #6A4C93;
+    font-family: Poppins;
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
+    background-color: #6A4C93;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+
+}
+
+/*Player's Info*/
+.player-info-box {
+    height: 400px;
+    width: 600px;
+    background-color: #8870A9;
+    color: white;
+    border-radius: 4%;
+}
+
+.rounded-input {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    width: 200px;
+    height: 30px;
+
+}
+
+.title-section {
+    background-color: #402862;
+    padding-top: auto;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Navigation CSS */
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    padding: 10px;
-    position: fixed;
+    padding: 20px;
+    /* position: fixed;
     top: 0;
-    left: 0;
+    left: 0; */
     width: 100%;
-    z-index: 1000; 
-}
-
-.nav-links {
-    display: flex;
+    z-index: 1000;
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
-.nav-links li {
-    margin: 35px;
-    color: #0000;
-}
-
-.nav-links a {
+nav a {
     text-decoration: none;
-    font-weight: 500;
-    font-size:  16px;
-    font-family: 'EB Garamond', serif;
-     
 }
 
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: bisque;
-    margin: 20px 0;
+#rules {
+    color: #D8B7FF;
+}
+
+#leadership {
+    color: #8AC926;
+}
+
+#right-links a:first-child {
+    border-radius: 10px;
+    background-color: #3D1B6C;
+    padding: 13px 27px;
+}
+
+#right-links a:nth-child(2) {
+    border-radius: 10px;
+    background-color: #000;
+    padding: 13px 27px;
+}
+
+#logo-container {
+    margin-top: 100px;
+    margin-left: 84px;
+}
+
+#right-links {
+    margin-top: 100px;
+    margin-right: 102px;
+    display: flex;
+}
+
+#right-links a:first-child {
+    margin-right: 20px;
+}
+
+/* Player entry page css */
+
+#player-title {
+    margin-top: 22px;
+    margin-left: 273px;
+    margin-bottom: 73px;
+    color: white;
+}
+
+#player-setup {
+    display: flex;
+    flex-direction: column;
+}
+
+#player-entries {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 773px;
+    height: 360px;
+    border-radius: 0px 0px 20px 20px;
+    background: #8870A9;
+}
+
+#player-title-container {
+    width: 773px;
+    height: 90px;
+    border-radius: 20px 20px 0px 0px;
+    background: #402862;
+}
+
+#player1-container {
+    margin-top: 59px;
+}
+
+#player1-name,
+#player2-name {
+    margin-top: 12px;
+}
+
+#player1-label,
+#player2-label,
+#player2color-entry,
+#player1color-entry {
+    color: white;
+    font-size: 20px;
+}
+
+::placeholder {
+    color: #858585;
+    font-size: 20px;
+}
+
+#player1-name,
+#player2-name {
+    width: 219px;
+    height: 50px;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+#player2-container {
+    margin-top: 59px;
+    margin-left: 55px;
+}
+
+#player-setup {
+    margin-top: 115px;
+}
+
+.color-options {
+    display: flex;
+    margin-top: 23px;
+}
+
+.color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#begin-btn {
+    margin-top: 48px;
+    margin-bottom: 105px;
+    background-color: #8F9499;
+    padding: 14px 104px;
+    border-radius: 20px;
+    border-bottom: 13px solid #7D8084;
 }
 
 
 /* Grid page css */
 .grid-container {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(5, 50px);
     grid-template-rows: repeat(5, 50px);
     grid-gap: 10px; /* Adjust the gap size as needed */
@@ -58,22 +210,43 @@ nav {
 .grid-item {
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    border-radius:15%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-size: 1.2em;
+    background-color: #6A4C93;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.grid-item:hover {
+    background-color: #D8B7FF;
+    cursor: pointer;
+}
+h2{
+    color:#D8B7FF;
+    font-size:1.15em;
 }
 
+.score img:first-child{
+   margin-top :10px;
+   margin-left: 20px;
+}
 
+#player2 {
+    margin-right:5px;
+    margin-left: 20px;
+
+}
 .player-setup-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .player-setup {
-    border: 2px solid black;
     padding: 20px;
     margin: 10px;
 }
@@ -89,9 +262,10 @@ nav {
     margin-right: 10px;
     margin-top: 5px;
     cursor: pointer;
+    border: 2px solid white;
 }
 
-/* Styles for the question page*/
+/* Styles for the question page */
 .question-container {
     width: 80%;
     display: flex;
@@ -106,7 +280,7 @@ nav {
     font-size: 1.2em;
     margin-bottom: 10px;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
 }
 
@@ -125,3 +299,35 @@ nav {
 .selected {
     background-color: lightblue;
 }
+
+/* Testing Submit button css */
+#submitBtn {
+    margin-top: 48px;
+    background-color: #8F9499;
+    padding: 14px 104px;
+    border-radius: 20px;
+    border-bottom: 13px solid #7D8084;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: block;
+}
+
+
+
+/* Footer*/
+
+#footer-rect {
+    width: 1440px;
+    height: 88px;
+    flex-shrink: 0;
+    background: #432A66;
+}
+
+#volume-btn {
+    display: flex;
+    padding-top: 17px;
+    margin-left: 84px;
+}
+
+/* rules page */
+
