@@ -1,54 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Setup</title>
     <link rel="stylesheet" href="./main.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="app.js"></script>
 </head>
+
 <body>
+
     <header>
         <!-- navigation bar -->
-       <nav>
-               
-               <ul class="nav-links">
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="leadership.html">Leadership Board</a></li>
-                   <li><a href="contactus.html">Contact Us</a></li>
-               </ul>
-       </nav>
-   </header>
+        <nav>
+            <!-- <ul class="nav-links"> -->
+            <div id="logo-container">
+                <a id="home" href="index.html">Home</a>
+            </div>
+            <div id="right-links">
+                <a id="rules" href="rules.html">Rules</a>
+                <a id="leadership" href="leadership.html">Leadership Board</a>
+            </div>
+            <!-- </ul> -->
+        </nav>
+    </header>
+    <main>
+        <div id="player-setup">
+            <div id="player-title-container">
+                <h1 id="player-title">PLAYER INFO</h1>
+            </div>
+            <div id="player-entries">
+                <div id="player1-container">
+                    <div id="player1name-entry">
+                        <label for="player1-name" id="player1-label">PLAYER 1: </label><br>
+                        <input type="text" id="player1-name" class="rounded-input" placeholder="Enter Name">
+                    </div>
+                    <div id="player1color-entry">
+                        <div class="color-options">
+                            <label for="player1-color">PLAYER 1 COLOR:</label>
+                            <span class="color" style="background-color: #FF595E;" onclick="selectColor('red')"></span>
+                            <span class="color" style="background-color: #FFCA3A;"
+                                onclick="selectColor('yellow')"></span>
+                            <span class="color" style="background-color: #6A4C93;"
+                                onclick="selectColor('purple')"></span>
+                            <span class="color" style="background-color: #63B3E6;"
+                                onclick="selectColor('light-blue')"></span>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="player-setup">
-            <label for="player1Name">PLAYER 1 NAME: </label>
-            <input type="text" id="player1Name">
-            
-            <div class="color-options">
-                <label for="player1Color">PLAYER 1 COLOR:</label>
-                <span class="color" style="background-color: red;" onclick="selectColor('red')"></span>
-                <span class="color" style="background-color: blue;" onclick="selectColor('blue')"></span>
-                <span class="color" style="background-color: green;" onclick="selectColor('green')"></span>
+                <div id="player2-container">
+                    <div id="player2name-entry">
+                        <label for="player2-name" id="player2-label">PLAYER 2: </label><br>
+                        <input type="text" id="player2-name" class="rounded-input" placeholder="Enter Name">
+                    </div>
+                    <div id="player2color-entry">
+                        <div class="color-options">
+                            <label for="player1-color">PLAYER 2 COLOR:</label>
+                            <span class="color" style="background-color: #FF59EE;" onclick="selectColor('pink')"></span>
+                            <span class="color" style="background-color: #FFA43A;"
+                                onclick="selectColor('orange')"></span>
+                            <span class="color" style="background-color: #8AC926;"
+                                onclick="selectColor('green')"></span>
+                            <span class="color" style="background-color: #1982C4;"
+                                onclick="selectColor('dark-blue')"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="player-setup">
-            <label for="player2Name">PLAYER 2 NAME: </label>
-            <input type="text" id="player2Name">
+        <div id="begin-btn"> <a href="./grid.html"> Begin</a></div>
 
-            <div class="color-options">
-                <label for="player1Color">PLAYER 2 COLOR:</label>
-                <span class="color" style="background-color: red;" onclick="selectColor('red')"></span>
-                <span class="color" style="background-color: blue;" onclick="selectColor('blue')"></span>
-                <span class="color" style="background-color: green;" onclick="selectColor('green')"></span>
-            </div>
-        </div>
-
-    <div> <a href="/grid.html"> let's go</a></div>
-    
-    <script>
-        function selectColor(color) {
-            alert('Selected color: ' + color);
-        }
-    </script>
+        <script>
+            function selectColor(color) {
+                //alert('Selected color: ' + color);
+                const selectedColor = document.querySelector(`.color[onclick="selectColor('${color}')"]`);
+                selectedColor.innerHTML = '&#10003;';
+            }
+        </script>
+    </main>
 </body>
+<footer>
+    <div id="footer-rect">
+        <div id="volume-btn">
+            <img src="./assets/volume.png" alt="volume button">
+        </div>
+
+    </div>
+</footer>
+
 </html>

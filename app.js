@@ -12,13 +12,22 @@ function loadQuestion() {
         });
 }
 
+//function to handle answer selection
 function selectOption(option) {
-    // to remove selected class from all options
     var options = document.querySelectorAll('.option');
-    options.forEach(function(item) {
-        item.classList.remove('selected');
+    options.forEach(function(opt) {
+        opt.classList.remove('selected');
     });
 
     // to highlight selected answer
     option.classList.add('selected');
+
+    //button is visible
+    document.getElementById('submitBtn').removeAttribute('disabled');
+}
+
+// JavaScript function to handle answer submission
+function submitAnswer() {
+    var selectedOption = document.querySelector('.option.selected').textContent;
+    alert('You selected: ' + selectedOption);
 }
