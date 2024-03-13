@@ -1,4 +1,5 @@
 body {
+    /* background-image: url(./assets/Background_01.png); */
     display: flex;
     flex-direction: column;
     /* align-items: center;
@@ -49,6 +50,17 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+/* 
+header {
+    background-image: url(./assets/Background_01.png); /* Light gray background for header 
+    padding: 20px;
+} */
+
+.logo img {
+    height: 90px; /* Set the height of the logo */
+    width: auto; /* Let the width adjust proportionally */
+    margin-left: 20px; /* Add margin to the right of the logo for spacing */
 }
 
 /* Navigation CSS */
