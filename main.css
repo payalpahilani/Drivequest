@@ -200,6 +200,16 @@ nav a {
 
 /* Grid page css */
 
+
+
+.grid-container-wrapper {
+    margin: 0 auto;
+}
+
+.grid-text {
+    text-align: center;
+}
+
 .grid-wrapper {
     display: flex;
     justify-content: center;
@@ -208,7 +218,7 @@ nav a {
     height:350px;
     border-radius: 15px;
     background: #57328A;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     /* padding: 30px;  */
 }
 
@@ -245,6 +255,8 @@ h2 {
     color: #D8B7FF;
     font-size: 1.15em;
 }
+
+
 
 .score img:first-child {
     margin-top: 10px;
