@@ -68,17 +68,25 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    /* position: fixed;
-    top: 0;
-    left: 0; */
-    width: 100%;
     z-index: 1000;
-    list-style: none;
 }
 
 nav a {
     text-decoration: none;
 }
+
+.leadership-crown {
+    position: relative;
+    display: inline-block;
+}
+
+.leadership-crown img {
+    position: absolute;
+    top: -38px; 
+    left: calc(50% - 17.5px); 
+    width: 35px; 
+}
+
 
 #rules {
     color: #D8B7FF;
@@ -86,6 +94,7 @@ nav a {
 
 #leadership {
     color: #8AC926;
+
 }
 
 #right-links a:first-child {
@@ -98,6 +107,7 @@ nav a {
     border-radius: 10px;
     background-color: #000;
     padding: 13px 27px;
+  
 }
 
 #logo-container {
@@ -108,7 +118,8 @@ nav a {
 #right-links {
     margin-top: 100px;
     margin-right: 102px;
-    display: flex;
+  
+    
 }
 
 #right-links a:first-child {
@@ -210,7 +221,7 @@ nav a {
 }
 
 
-/* Grid page css */
+/* Grid page css ------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 
@@ -240,14 +251,11 @@ nav a {
     grid-template-columns: repeat(5, 50px);
     grid-template-rows: repeat(5, 50px);
     grid-gap: 10px;
-
-    /* Adjust the gap size as needed */
 }
 
 .grid-item {
     width: 100%;
     height: 100%;
-    /*border: 1px solid black;*/
     border-radius: 15%;
     display: flex;
     align-items: center;
@@ -256,8 +264,6 @@ nav a {
     font-size: 1.2em;
     background-color: #6A4C93;
 }
-
-
 .grid-item:hover {
     background-color: #D8B7FF;
     cursor: pointer;
@@ -306,39 +312,68 @@ h2 {
     border: 2px solid white;
 }
 
-/* Styles for the question page */
+/* Styles for the question page --------------------------------------------------------------------------------------------------------------*/
 .question-container {
-    width: 80%;
+    width: 75%;
     display: flex;
-    justify-content: center;
+    flex-direction: column; 
     margin: 0 auto;
-    border: 1px solid #ccc;
-    padding: 10px;
+    box-shadow: 0 0 10px #83BAF3;
+    border-radius: 15px;
+    padding-top:10px;
     margin-bottom: 20px;
+    background-color: #83BAF3;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .question {
     font-size: 1.2em;
     margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #1982C4;
+    padding: 25px;
+    border-radius: 15px;
 }
+.player-turn{
+    font-size: 0.75em;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color:#311354;
 
+}
 .options-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+    margin-top: 40px;
+   width: 75%;
+  
 }
 
 .option {
     padding: 10px;
-    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #311354;
+    color: white;
     cursor: pointer;
-}
 
+
+
+}
 .selected {
-    background-color: lightblue;
+    background-color:#1982C4;
+    box-shadow: 0 0 10px #1982C4;
+    color:#311354;
+
 }
 
 /* Testing Submit button css */
@@ -349,16 +384,19 @@ h2 {
     border-radius: 20px;
     border-bottom: 13px solid #7D8084;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 40px;
     display: block;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 
 
-/* Footer*/
+/* Footer-------------------------------------------------------------------------------------------------------------------------------------------*/
 
 #footer-rect {
-    width: 1440px;
+    width: 100%;
     height: 88px;
     flex-shrink: 0;
     background: #432A66;
