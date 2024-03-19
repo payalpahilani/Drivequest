@@ -68,17 +68,25 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    /* position: fixed;
-    top: 0;
-    left: 0; */
-    width: 100%;
     z-index: 1000;
-    list-style: none;
 }
 
 nav a {
     text-decoration: none;
 }
+
+.leadership-crown {
+    position: relative;
+    display: inline-block;
+}
+
+.leadership-crown img {
+    position: absolute;
+    top: -38px; 
+    left: calc(50% - 17.5px); 
+    width: 35px; 
+}
+
 
 #rules {
     color: #D8B7FF;
@@ -86,6 +94,7 @@ nav a {
 
 #leadership {
     color: #8AC926;
+
 }
 
 #right-links a:first-child {
@@ -98,6 +107,7 @@ nav a {
     border-radius: 10px;
     background-color: #000;
     padding: 13px 27px;
+  
 }
 
 #logo-container {
@@ -108,7 +118,8 @@ nav a {
 #right-links {
     margin-top: 100px;
     margin-right: 102px;
-    display: flex;
+  
+    
 }
 
 #right-links a:first-child {
