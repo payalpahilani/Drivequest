@@ -68,6 +68,7 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    margin-top: 5px;
     z-index: 1000;
 }
 
@@ -111,13 +112,13 @@ nav a {
 }
 
 #logo-container {
-    margin-top: 100px;
+   margin-top: 20px;
     margin-left: 84px;
 }
-
 #right-links {
-    margin-top: 100px;
+    margin-top: 20px;
     margin-right: 102px;
+    margin-bottom: 20px;
   
     
 }
@@ -329,7 +330,7 @@ h2 {
 }
 
 .question {
-    font-size: 1.2em;
+    font-size: 1em;
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
@@ -380,7 +381,7 @@ h2 {
 #submitBtn {
     margin-top: 48px;
     background-color: #8F9499;
-    padding: 14px 104px;
+    padding: 14px 90px;
     border-radius: 20px;
     border-bottom: 13px solid #7D8084;
     margin: 0 auto;
@@ -388,7 +389,7 @@ h2 {
     display: block;
     color: white;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 
