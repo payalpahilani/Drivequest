@@ -37,26 +37,31 @@ function selectOption(option) {
     //button is visible
     document.getElementById('submitBtn').removeAttribute('disabled');
 }
-// JavaScript function to handle answer submission
+//Function to handle answer submission
 function submitAnswer() {
-    var selectedOption = document.querySelector('.option.selected').textContent;
-    // Check if the selected option is correct
-    if (selectedOption.trim() === 'C. Failing to remain at the scene of an accident') {
-        // Increment the score if the answer is correct
-        score++;
-        // Update the score display
-        document.getElementById('score').textContent = score;
-        // Provide feedback to the player
-        alert('Correct! You earned a point.');
-    } else {
-        // Provide feedback to the player for incorrect answer
-        alert('Incorrect! Try again.');
-    }
+    var selectedOption = document.querySelector('.option.selected');
+    if (selectedOption) {
+        var selectedText = selectedOption.textContent;
+        
+        // Check if the selected option is correct
+        if (selectedText.trim() === 'C. Failing to remain at the scene of an accident') {
+            // Increment the score if the answer is correct
+            score++;
+            // Update the score display for the current player
+            var scoreDisplay = document.getElementById('player' + currentPlayer);
+            scoreDisplay.value = score;
+            // Provide feedback to the player
+            alert('Correct! You earned a point.');
+        } else {
+            // Provide feedback to the player for incorrect answer
+            alert('Incorrect! Try again.');
+        }
 
-    // Reset selected option and disable submit button
-    var options = document.querySelectorAll('.option');
-    options.forEach(function(opt) {
-        opt.classList.remove('selected');
-    });
-    document.getElementById('submitBtn').setAttribute('disabled', 'true');
+        // Reset selected option and disable submit button
+        var options = document.querySelectorAll('.option');
+        options.forEach(function(opt) {
+            opt.classList.remove('selected');
+        });
+        document.getElementById('submitBtn').setAttribute('disabled', 'true');
+    }
 }
