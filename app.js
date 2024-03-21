@@ -11,14 +11,57 @@ function loadQuestion() {
             document.getElementById('questionContainer').style.display = 'block';
         });
 }
+//Taking turns
+let currentPlayer = 1; // Initialize current player
+
+function displayPlayerTurn() {
+    const playerTurnElement = document.querySelector('.player-turn');
+    playerTurnElement.textContent = `Player ${currentPlayer} - It's your turn!`;
+}
+function switchPlayerTurn() {
+    currentPlayer = currentPlayer === 1 ? 2 : 1; // Toggle between player 1 and player 2
+    displayPlayerTurn(); 
+}
+//function to handle answer selection
+
+let score = 0; // Initialize the player's score
 
 function selectOption(option) {
-    // to remove selected class from all options
     var options = document.querySelectorAll('.option');
-    options.forEach(function(item) {
-        item.classList.remove('selected');
+    options.forEach(function(opt) {
+        opt.classList.remove('selected');
     });
-
     // to highlight selected answer
     option.classList.add('selected');
+
+    //button is visible
+    document.getElementById('submitBtn').removeAttribute('disabled');
+}
+//Function to handle answer submission
+function submitAnswer() {
+    var selectedOption = document.querySelector('.option.selected');
+    if (selectedOption) {
+        var selectedText = selectedOption.textContent;
+        
+        // Check if the selected option is correct
+        if (selectedText.trim() === 'C. Failing to remain at the scene of an accident') {
+            // Increment the score if the answer is correct
+            score++;
+            // Update the score display for the current player
+            var scoreDisplay = document.getElementById('player' + currentPlayer);
+            scoreDisplay.value = score;
+            // Provide feedback to the player
+            alert('Correct! You earned a point.');
+        } else {
+            // Provide feedback to the player for incorrect answer
+            alert('Incorrect! Try again.');
+        }
+
+        // Reset selected option and disable submit button
+        var options = document.querySelectorAll('.option');
+        options.forEach(function(opt) {
+            opt.classList.remove('selected');
+        });
+        document.getElementById('submitBtn').setAttribute('disabled', 'true');
+    }
 }

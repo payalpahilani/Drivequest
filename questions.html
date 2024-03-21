@@ -3,20 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
     <title>DriveQuest Questions</title>
+    <script src="app.js"></script>
 </head>
 <body>
+    <header>
+        <!-- navigation bar -->
+        <nav>
+           
+        </nav>
+    </header>
+<main>
     <div class="question-container">
+        <div class="player-turn">Player 1 - It's your turn!</div>
         <div class="question">In Ontario, a driver will be given 7 demerit points if he/she is convicted of:</div>
     </div>
-        <div class="options-container">
-            <div class="option" onclick="selectOption(this)">A.  Following too close</div>
-            <div class="option" onclick="selectOption(this)">B. Failing to stop for a stopped school bus with its red alternating lights on</div>
-            <div class="option" onclick="selectOption(this)">C.  Failing to remain at the scene of an accident</div>
-            <div class="option" onclick="selectOption(this)">D.  Failing to obey the directions of a police officer</div>
-        </div>
-    
+    <div class="options-container">
+        <div class="option" onclick="selectOption(this)">A. Following too close</div>
+        <div class="option" onclick="selectOption(this)">B. Failing to stop for a stopped school bus with its red alternating lights on</div>
+        <div class="option" onclick="selectOption(this)">C. Failing to remain at the scene of an accident</div>
+        <div class="option" onclick="selectOption(this)">D. Failing to obey the directions of a police officer</div>
+    </div>
 
+    <!-- button with disabled property -->
+    <button id="submitBtn" onclick="submitAnswer()" disabled>SUBMIT</button>
+
+    <!-- Score display -->
+    <div class="score">
+        <img src="./assets/player1.png" style="width:40px" alt="player's icon">
+        <input type="text" id="player1" style="width:80px" placeholder=""disabled>
+        <input type="text" id="player2" style="width:80px" placeholder=""disabled>
+        <img src="./assets/player2.png" style="width:40px" alt="player's icon">
+    </div>
+</main>
+    <footer>
+        <div id="footer-rect">
+            <div id="volume-btn">
+                <img src="./assets/volume.png" alt="volume button">
+            </div>
+    
+        </div>
+   
+    </footer>
 
 </body>
 </html>
