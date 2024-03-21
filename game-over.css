@@ -15,34 +15,113 @@ body {
 }
 
 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 95%;
     max-width: 100%;
     height: auto;
-    /* margin: 20px; */
-    /* padding: 20px; */
-    /*background-color: rgba(255, 255, 255, 0.8);  Add a semi-transparent background for better readability */
+    left: 0;
+}
+.custom-button {
+    border-radius: 8px;
+    width: 120px;
+    font-size: 15px;
+    height: 40px;
+    background-color: #71539A;
+    color: #FFF;
+    font-weight:700;
+}
+.overlay {
+    position: absolute;
+    top: 55%;
+    left: 47%;
+    transform: translate(-50%, -50%);
 }
 
-/* home page decorations */
+
+  
+.title-inside-image {
+    color: white; /* Adjust color to ensure visibility */
+    margin-left: 40%;
+    width: 130px;
+}
+  
+.button-below-title {
+    margin-top: 20px; /* Adjust margin as needed */
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 700;
+    width: 250px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 20%;
+}
+  
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+
+/* Rules-Button */
+.rules-container {
+    position: relative;
+    margin-top: 30px; 
+}
+  
+.rules-custom-button {
+    width: 90px;
+    height: 40px;
+    border-radius: 7px;
+    background-color: #3D1B6C;
+    color: #D8B7FF; /* Text color */
+    font-size: 20px; 
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer */
+    position: absolute;
+    top: 35px; /* Top Margin */
+    right: 0;
+    margin-right: 300px; /* Margin from the right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leader-custom-button {
+    width: 230px;
+    height: 40px;
+    border-radius: 7px;
+    background-color: black;
+    color: #8AC926; /* Text color */
+    font-size: 20px; 
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer */
+    position: absolute;
+    top: 35px; /* Top Margin */
+    right: 0;
+    margin-right: 50px; /* Adjust margin from the right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 .game-over img {
     height: 400px; 
     width: auto; 
-    display:block;
+    display:flex;
     justify-content: center;
-    margin-left: 33%;
+    /* margin-left: 33%;
+    margin-right: 33%; */
+    padding-left: 10%;
 }
-/* 
-.home-grid img {
-    height: 510px; 
-    width: auto; 
-    margin-left: 75%;
-    top: 0%;
-} */
 
-.title h1 {
+
+h1 {
    
-    /* flex-shrink: 0; */
+    flex-shrink: 0;
     display: flex;
     justify-content: center;
 
