@@ -12,8 +12,6 @@ body {
     font-family: Poppins;
     font-weight: bold;
     background-color: #6A4C93;
-
-
 }
 
 .container { width: 95%;
@@ -36,15 +34,9 @@ body {
     left: 45%;
     transform: translate(-50%, -50%);
 }
-.title-inside-image {
-    color: white; /* Adjust color to ensure visibility */
-    margin-left: 40%;
-    width: 130px;
-    height: auto;
-}
 
 .button-below-title {
-    margin-top: 20px; /* Adjust margin as needed */
+    margin-top: 20px;
     color: #FFF;
     font-size: 15px;
     font-weight: 700;
@@ -56,30 +48,32 @@ body {
 .button-row {
     display: flex;
     justify-content: center;
-    margin-top: 20px; /* Adjust margin as needed */}
-    .title-inside-image {
-        color: white; /* Adjust color to ensure visibility */
-        margin-left: 40%;
-        width: 130px;
-    }
-    
-    .button-below-title {
-        margin-top: 20px; /* Adjust margin as needed */
-        color: #FFF;
-        font-size: 15px;
-        font-weight: 700;
-        width: 250px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        margin-left: 20%;
-    }
-    
-    .button-row {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px; /* Adjust margin as needed */
-    }
+    margin-top: 20px; 
+}
 
-    /* Rules-Button */
+.title-inside-image {
+    color: white; /* Color for visibility */
+    margin-left: 18%;
+    width: 330px;
+}
+    
+.button-below-title {
+    margin-top: 20px; 
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 700;
+    width: 250px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 20%;
+}
+    
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+/* Rules-Button */
 .rules-container {
     position: relative;
     margin-top: 30px; 
@@ -120,6 +114,20 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.leader-custom-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    padding: 10%;
+    left: 50%;
+    transform: translate(-30px, -50px);
+    width: 8px;
+    height: 8px;
+    background-image: url(./assets/crown.png);
+    background-size: cover;
+  }
+
 .game-over img {
     height: 400px; 
     width: auto; 
