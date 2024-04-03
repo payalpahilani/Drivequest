@@ -51,6 +51,7 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 /* 
 header {
     background-image: url(./assets/Background_01.png); /* Light gray background for header 
@@ -58,9 +59,12 @@ header {
 } */
 
 .logo img {
-    height: 90px; /* Set the height of the logo */
-    width: auto; /* Let the width adjust proportionally */
-    margin-left: 20px; /* Add margin to the right of the logo for spacing */
+    height: 90px;
+    /* Set the height of the logo */
+    width: auto;
+    /* Let the width adjust proportionally */
+    margin-left: 20px;
+    /* Add margin to the right of the logo for spacing */
 }
 
 /* Navigation CSS */
@@ -83,9 +87,9 @@ nav a {
 
 .leadership-crown img {
     position: absolute;
-    top: -38px; 
-    left: calc(50% - 17.5px); 
-    width: 35px; 
+    top: -38px;
+    left: calc(50% - 17.5px);
+    width: 35px;
 }
 
 
@@ -108,19 +112,20 @@ nav a {
     border-radius: 10px;
     background-color: #000;
     padding: 13px 27px;
-  
+
 }
 
 #logo-container {
-   margin-top: 20px;
+    margin-top: 20px;
     margin-left: 84px;
 }
+
 #right-links {
     margin-top: 20px;
     margin-right: 102px;
     margin-bottom: 20px;
-  
-    
+
+
 }
 
 #right-links a:first-child {
@@ -239,7 +244,7 @@ nav a {
     justify-content: center;
     flex-direction: column;
     width: 350px;
-    height:350px;
+    height: 350px;
     border-radius: 15px;
     background: #57328A;
     /* margin: 0 auto; */
@@ -265,6 +270,7 @@ nav a {
     font-size: 1.2em;
     background-color: #6A4C93;
 }
+
 .grid-item:hover {
     background-color: #D8B7FF;
     cursor: pointer;
@@ -317,11 +323,11 @@ h2 {
 .question-container {
     width: 600px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     margin: 0 auto;
     box-shadow: 0 0 10px #83BAF3;
     border-radius: 15px;
-    padding-top:10px;
+    padding-top: 10px;
     margin-bottom: 20px;
     background-color: #83BAF3;
     color: white;
@@ -330,14 +336,16 @@ h2 {
     padding: 20px;
     margin-top: 20px;
 }
+
 .options-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     margin-top: 20px;
     width: 600px;
-  
+
 }
+
 .question {
     font-size: 1em;
     margin-bottom: 10px;
@@ -350,14 +358,15 @@ h2 {
     padding: 25px;
     border-radius: 15px;
 }
-.player-turn{
+
+.player-turn {
     font-size: 0.75em;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    color:#311354;
+    color: #311354;
 
 }
 
@@ -372,10 +381,11 @@ h2 {
 
 
 }
+
 .selected {
-    background-color:#1982C4;
+    background-color: #1982C4;
     box-shadow: 0 0 10px #1982C4;
-    color:#311354;
+    color: #311354;
 
 }
 
@@ -412,3 +422,18 @@ h2 {
 }
 
 /* rules page */
+
+
+
+
+/* leadership page */
+
+.board-container {
+    width: 550px;
+    height: 450px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 12px solid #8963BE;
+    background: #57328A;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
