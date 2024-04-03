@@ -391,8 +391,8 @@ h2 {
 /* Footer*/
 
 #footer-rect {
-    width: 1440px;
-    height: 88px;
+    width: auto;
+    height: 80px;
     flex-shrink: 0;
     background: #432A66;
 }

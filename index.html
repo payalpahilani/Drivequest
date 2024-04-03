@@ -114,7 +114,38 @@
 </footer>
 <script>
     const volumeBtn = document.getElementById('volume-btn');
+const volumeIcon = document.getElementById('volume-icon');
+const audio = new Audio("./assets/Chill-Ukulele-Music.mp3");
+
+volumeBtn.addEventListener("click", () => {
+    audio.play();
+});
+
+// Set initial state of audio
+let isMuted = true;
+audio.muted = isMuted;
+
+// Function to toggle audio playback
+function toggleAudio() {
+    if (isMuted) {
+        // Unmute the audio
+        audio.muted = false;
+        isMuted = false;
+        // Change volume button icon to unmuted state
+        volumeIcon.src = './assets/volume.png';
+    } else {
+        // Mute the audio
+        audio.muted = true;
+        isMuted = true;
+        // Change volume button icon to muted state
+        volumeIcon.src = './assets/mute.png';
+    }
+}
+</script>
+<!--<script>
+    const volumeBtn = document.getElementById('volume-btn');
     const volumeIcon = document.getElementById('volume-icon');
+    
     const audio = new Audio();
     audio.src = './assets/Chill-Ukulele-Music.mp3';
     // Set initial state of audio
@@ -139,7 +170,7 @@
     }
    // volumeBtn.addEventListener('click', toggleAudio);
 
-</script>
+</script>-->
 <!--Credits:Chill Ukulele And Acoustic Guitar by LesFM | https://lesfm.net/
 Music promoted by https://www.chosic.com/free-music/all/
 Creative Commons CC BY 3.0
