@@ -31,3 +31,4 @@ function submitAnswer() {
     var selectedOption = document.querySelector('.option.selected').textContent;
     alert('You selected: ' + selectedOption);
 }
+

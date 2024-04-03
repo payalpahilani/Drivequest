@@ -9,6 +9,7 @@ body {
     background-color: #6A4C93;
     font-family: Poppins;
     font-weight: bold;
+
 }
 
 main {
@@ -16,7 +17,6 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     margin: 0;
     background-color: #6A4C93;
     font-family: 'Poppins', sans-serif;
@@ -51,12 +51,20 @@ main {
     justify-content: center;
     align-items: center;
 }
-/* 
-header {
-    background-image: url(./assets/Background_01.png); /* Light gray background for header 
-    padding: 20px;
-} */
 
+header{
+    padding:20px,10%;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+    overflow: hidden;
+}  
 .logo img {
     height: 90px; /* Set the height of the logo */
     width: auto; /* Let the width adjust proportionally */
@@ -67,10 +75,9 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    /* position: fixed;
+    align-items: center;
     top: 0;
-    left: 0; */
+    left: 0; 
     width: 100%;
     z-index: 1000;
     list-style: none;
@@ -208,7 +215,22 @@ nav a {
     border-radius: 20px;
     border-bottom: 13px solid #7D8084;
 }
+@media only screen and (max-width: 750px) {
 
+    nav {
+      flex-direction: column; 
+      align-items: center;
+    }
+    #logo-container {
+      margin-left: 10px;
+    }
+   
+   #player-setup{
+    min-width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+}
 
 /* Grid page css */
 
@@ -368,6 +390,9 @@ h2 {
     display: flex;
     padding-top: 17px;
     margin-left: 84px;
+}
+#volume-btn:hover {
+    cursor: pointer;
 }
 
 /* rules page */
