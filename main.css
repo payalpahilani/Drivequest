@@ -427,6 +427,12 @@ h2 {
 
 
 /* leadership page */
+.banner {
+    width: 500px;
+    height: auto;
+
+}
+
 
 .board-container {
     width: 550px;
