@@ -21,7 +21,7 @@ main {
     background-color: #6A4C93;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    
+
 }
 
 /*Player's Info*/
@@ -100,10 +100,10 @@ nav a {
     padding: 13px 27px;
 }
 
-#logo-container {
+/*#logo-container {
     margin-top: 100px;
     margin-left: 84px;
-}
+}*/
 
 #right-links {
     margin-top: 100px;
