@@ -421,25 +421,93 @@ h2 {
     margin-left: 84px;
 }
 
-/* rules page */
-
-
-
-
 /* leadership page */
+.leader-heading {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0px;
+    padding-top: 20px;
+}
+
 .banner {
     width: 500px;
     height: auto;
-
 }
-
 
 .board-container {
     width: 550px;
     height: 450px;
-    flex-shrink: 0;
     border-radius: 15px;
     border: 12px solid #8963BE;
     background: #57328A;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
 }
+
+.leaders-list {
+    padding: 0;
+}
+
+.leaders-list li {
+    margin-bottom: 3px;
+}
+
+.leaders-list li img {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.leader {
+    list-style-type: none;
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+    border-radius: 10px;
+    background: #886DAE;
+}
+
+.yellow {
+    border-radius: 10px;
+    border-bottom: 7px solid #E4B228;
+    background: #FFCA3A;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+.blue {
+    border-radius: 10px;
+    border-bottom: 7px solid #1174B1;
+    background: #1982C4;
+}
+
+.green {
+    border-radius: 10px;
+    border-bottom: 7px solid #79B716;
+    background: #8AC926;
+}
+
+.playagain-btn, .quit-btn {
+    all: unset;
+    width: 125px;
+    height: 40px;
+    border-radius: 15px;
+    border-bottom: 1px solid #FFF;
+    background: #71539A;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+
