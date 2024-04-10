@@ -337,6 +337,13 @@ h2 {
     margin-top: 20px;
 }
 
+#safeTimer {
+    display: flex;
+    margin: 0 auto;
+}
+
+
+
 .options-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
