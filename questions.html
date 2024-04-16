@@ -1,25 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
     <title>DriveQuest Questions</title>
-    <script src="app.js"></script>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								 
 </head>
+
 <body>
-
+    <header>
+        <!-- navigation bar -->
+        <nav>
+            <div id="logo-container">
+                <a id="home" href="home.html">Home</a>
+            </div>
+            <div id="right-links">
+                <a id="rules" href="rules.html">Rules</a>
+                <div class="leadership-crown"> 
+                    <img src="./assets/crown.png" alt="Black Crown">
+                    <a id="leadership" href="leadership.html">Leadership Board </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+<main>
     <div class="question-container">
-        <div class="question">In Ontario, a driver will be given 7 demerit points if he/she is convicted of:</div>
-    </div>
+        <div id="safeTimer">
+            <p id="safeTimerDisplay" style="margin-bottom: 3px;">00:30</p>
+        </div>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							  
+        <div class="player-turn">Player 1 - It's your turn!</div>
+        <div class="question"></div>
         <div class="options-container">
-            <div class="option" onclick="selectOption(this)">A.  Following too close</div>
-            <div class="option" onclick="selectOption(this)">B. Failing to stop for a stopped school bus with its red alternating lights on</div>
-            <div class="option" onclick="selectOption(this)">C.  Failing to remain at the scene of an accident</div>
-            <div class="option" onclick="selectOption(this)">D.  Failing to obey the directions of a police officer</div>
+            <div class="option" onclick="selectOption(this)"></div>
+            <div class="option" onclick="selectOption(this)"></div>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			  
+            <div class="option" onclick="selectOption(this)"></div>
+            <div class="option" onclick="selectOption(this)"></div>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								  
         </div>
-    
-    <!-- button with disabled property -->
-    <button id="submitBtn" onclick="submitAnswer()" disabled>Submit</button>
+    </div>
 
+    <!-- button with disabled property -->
+    <button id="submitBtn" onclick="submitAnswer()" disabled>SUBMIT</button>
+
+    <!--  Modal -->
+    <div id="feedbackModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p id="answerFeedback"></p>
+            <p id="scoreFeedback"></p>
+        </div>
+        <div class="modal-footer">
+            <button id="modalbtn" onclick="closeModal()">Okay</button>
+        </div>
+    </div>
+  
+    <!-- Score display -->
+    <div class="score">
+        <img src="./assets/player1.png" style="width:40px" alt="player's icon">
+        <input type="text" id="player1" style="width:80px" placeholder="Score">
+        <input type="text" id="player2" style="width:80px" placeholder="Score">
+        <img src="./assets/player2.png" style="width:40px" alt="players icon">
+    </div>
+</main>
+
+    <footer>
+        <div id="footer-rect">
+            <div id="volume-btn">
+                <img src="./assets/volume.png" alt="volume button">
+            </div>
+
+        </div>
+
+    </footer>
+    <script src="app.js"></script>
+    <script src="script.js"></script>
+    <script>
+    window.onload = function() {
+        const questionData = JSON.parse(localStorage.getItem('currentQuestion'));
+        const currentLevel = localStorage.getItem('currentLevel'); // Retrieve the level from localStorage
+        if (questionData) {
+            displayQuestion(questionData);
+        }
+    };
+</script>
 </body>
+
 </html>
