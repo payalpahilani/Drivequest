@@ -11,18 +11,7 @@ function loadQuestion() {
             document.getElementById('questionContainer').style.display = 'block';
         });
 }
-//Taking turns
-let currentPlayer = 1; // Initialize current player
 
-function displayPlayerTurn() {
-    const playerTurnElement = document.querySelector('.player-turn');
-    playerTurnElement.textContent = `Player ${currentPlayer} - It's your turn!`;
-}
-function switchPlayerTurn() {
-    currentPlayer = currentPlayer === 1 ? 2 : 1; // Toggle between player 1 and player 2
-    displayPlayerTurn(); 
-}
-//function to handle answer selection
 
 let score = 0; // Initialize the player's score
 
@@ -65,3 +54,5 @@ function submitAnswer() {
         document.getElementById('submitBtn').setAttribute('disabled', 'true');
     }
 }
+var scoreDisplay = document.getElementById('player' + currentPlayer);
+scoreDisplay.value = score;
