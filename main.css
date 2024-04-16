@@ -26,7 +26,7 @@ main {
 
 /*Player's Info*/
 .player-info-box {
-    height: 400px;
+    height: 300px;
     width: 600px;
     background-color: #8870A9;
     color: white;
@@ -51,6 +51,7 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 /* 
 header {
     background-image: url(./assets/Background_01.png); /* Light gray background for header 
@@ -58,9 +59,12 @@ header {
 } */
 
 .logo img {
-    height: 90px; /* Set the height of the logo */
-    width: auto; /* Let the width adjust proportionally */
-    margin-left: 20px; /* Add margin to the right of the logo for spacing */
+    height: 90px;
+    /* Set the height of the logo */
+    width: auto;
+    /* Let the width adjust proportionally */
+    margin-left: 20px;
+    /* Add margin to the right of the logo for spacing */
 }
 
 /* Navigation CSS */
@@ -68,17 +72,26 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    /* position: fixed;
-    top: 0;
-    left: 0; */
-    width: 100%;
+    margin-top: 5px;
     z-index: 1000;
-    list-style: none;
 }
 
 nav a {
     text-decoration: none;
 }
+
+.leadership-crown {
+    position: relative;
+    display: inline-block;
+}
+
+.leadership-crown img {
+    position: absolute;
+    top: -38px;
+    left: calc(50% - 17.5px);
+    width: 35px;
+}
+
 
 #rules {
     color: #D8B7FF;
@@ -86,6 +99,7 @@ nav a {
 
 #leadership {
     color: #8AC926;
+
 }
 
 #right-links a:first-child {
@@ -98,17 +112,20 @@ nav a {
     border-radius: 10px;
     background-color: #000;
     padding: 13px 27px;
+
 }
 
 #logo-container {
-    margin-top: 100px;
+    margin-top: 20px;
     margin-left: 84px;
 }
 
 #right-links {
-    margin-top: 100px;
+    margin-top: 20px;
     margin-right: 102px;
-    display: flex;
+    margin-bottom: 20px;
+
+
 }
 
 #right-links a:first-child {
@@ -133,14 +150,14 @@ nav a {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 773px;
-    height: 360px;
+    width: 750px;
+    height: 300px;
     border-radius: 0px 0px 20px 20px;
     background: #8870A9;
 }
 
 #player-title-container {
-    width: 773px;
+    width: 750px;
     height: 90px;
     border-radius: 20px 20px 0px 0px;
     background: #402862;
@@ -160,12 +177,13 @@ nav a {
 #player2color-entry,
 #player1color-entry {
     color: white;
-    font-size: 20px;
+    font-size:10px;
+    margin: 15px;
 }
 
 ::placeholder {
     color: #858585;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #player1-name,
@@ -213,7 +231,6 @@ nav a {
 /* Grid page css */
 
 
-
 .grid-container-wrapper {
     margin: 0 auto;
 }
@@ -227,7 +244,7 @@ nav a {
     justify-content: center;
     flex-direction: column;
     width: 350px;
-    height:350px;
+    height: 350px;
     border-radius: 15px;
     background: #57328A;
     /* margin: 0 auto; */
@@ -240,14 +257,11 @@ nav a {
     grid-template-columns: repeat(5, 50px);
     grid-template-rows: repeat(5, 50px);
     grid-gap: 10px;
-
-    /* Adjust the gap size as needed */
 }
 
 .grid-item {
     width: 100%;
     height: 100%;
-    /*border: 1px solid black;*/
     border-radius: 15%;
     display: flex;
     align-items: center;
@@ -256,7 +270,6 @@ nav a {
     font-size: 1.2em;
     background-color: #6A4C93;
 }
-
 
 .grid-item:hover {
     background-color: #D8B7FF;
@@ -276,8 +289,9 @@ h2 {
 }
 
 #player2 {
-    margin-right: 5px;
+    margin-top: 10px;
     margin-left: 20px;
+    margin-bottom: 15px;
 
 }
 
@@ -306,60 +320,96 @@ h2 {
     border: 2px solid white;
 }
 
-/* Styles for the question page */
+/* Styles for the question page --------------------------------------------------------------------------------------------------------------*/
 .question-container {
-    width: 80%;
+    width: 600px;
     display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    box-shadow: 0 0 5px #83BAF3;
+    border-radius: 10px;
+    background-color: #83BAF3;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 15px;
+    margin: 10px;
 }
 
-.question {
-    font-size: 1.2em;
-    margin-bottom: 10px;
+#safeTimer {
     display: flex;
+    margin: 0;
     justify-content: center;
-    align-items: center;
 }
 
 .options-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+    margin-top: 10px;
+    width: 600px;
+
 }
+
+.question {
+    font-size: 1em;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1982C4;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.player-turn {
+    font-size: 0.75em;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: #311354;
+
+}
+
 
 .option {
     padding: 10px;
-    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #311354;
+    color: white;
     cursor: pointer;
 }
 
 .selected {
-    background-color: lightblue;
+    background-color: #1982C4;
+    box-shadow: 0 0 10px #1982C4;
+    color: #311354;
+
 }
 
 /* Testing Submit button css */
 #submitBtn {
-    margin-top: 48px;
+    margin-top: 30px;
     background-color: #8F9499;
-    padding: 14px 104px;
+    padding: 14px 90px;
     border-radius: 20px;
     border-bottom: 13px solid #7D8084;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 40px;
     display: block;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
 }
 
-
-
-/* Footer*/
+/* Footer--*/
 
 #footer-rect {
-    width: 1440px;
-    height: 88px;
+    width: 100%;
+    height: 80px;
     flex-shrink: 0;
     background: #432A66;
 }
@@ -370,4 +420,116 @@ h2 {
     margin-left: 84px;
 }
 
-/* rules page */
+/* leadership page */
+.leader-heading {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0px;
+    padding-top: 20px;
+}
+
+.banner {
+    width: 500px;
+    height: auto;
+}
+
+.board-container {
+    width: 550px;
+    height: 450px;
+    border-radius: 15px;
+    border: 12px solid #8963BE;
+    background: #57328A;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.leaders-list {
+    padding: 0;
+}
+
+.leaders-list li {
+    margin-bottom: 3px;
+}
+
+.leaders-list li img {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.leader {
+    list-style-type: none;
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+    border-radius: 10px;
+    background: #886DAE;
+}
+
+.yellow {
+    border-radius: 10px;
+    border-bottom: 7px solid #E4B228;
+    background: #FFCA3A;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+.blue {
+    border-radius: 10px;
+    border-bottom: 7px solid #1174B1;
+    background: #1982C4;
+}
+
+.green {
+    border-radius: 10px;
+    border-bottom: 7px solid #79B716;
+    background: #8AC926;
+}
+
+.playagain-btn, .quit-btn {
+    all: unset;
+    width: 125px;
+    height: 40px;
+    border-radius: 15px;
+    border-bottom: 1px solid #FFF;
+    background: #71539A;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/* Modal CSS */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 150px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  
+  .modal-footer {
+    text-align: right;
+  }
+  
