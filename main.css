@@ -210,21 +210,21 @@ nav a {
 }
 
 .color.selected {
-    border: 4px solid white; 
+    border: 2px solid white; 
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     display: inline-flex; 
     justify-content: center; 
     align-items: center;
 }
-
 .color {
     width: 20px;
-    color: white;
+    height: 20px;
+    border-radius: 50%;
     margin-right: 10px;
     margin-top: 5px;
     cursor: pointer;
-
+    border: 2px solid white;
 }
-
 
 #begin-btn {
     margin-top: 48px;
@@ -314,19 +314,6 @@ h2 {
     margin: 10px;
 }
 
-.color-options {
-    display: flex;
-}
-
-.color {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-top: 5px;
-    cursor: pointer;
-    border: 2px solid white;
-}
 
 /* Styles for the question page --------------------------------------------------------------------------------------------------------------*/
 .question-container {
