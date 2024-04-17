@@ -10,6 +10,14 @@ body {
     font-family: Poppins;
     font-weight: bold;
 }
+/* Logo */
+.logo img {
+    height: 90px; 
+    width: auto; 
+    margin-top: 15px;
+    
+}
+
 
 main {
     display: flex;
