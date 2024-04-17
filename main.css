@@ -26,7 +26,7 @@ main {
 
 /*Player's Info*/
 .player-info-box {
-    height: 400px;
+    height: 300px;
     width: 600px;
     background-color: #8870A9;
     color: white;
@@ -51,6 +51,7 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 /* 
 header {
     background-image: url(./assets/Background_01.png); /* Light gray background for header 
@@ -58,9 +59,12 @@ header {
 } */
 
 .logo img {
-    height: 90px; /* Set the height of the logo */
-    width: auto; /* Let the width adjust proportionally */
-    margin-left: 20px; /* Add margin to the right of the logo for spacing */
+    height: 90px;
+    /* Set the height of the logo */
+    width: auto;
+    /* Let the width adjust proportionally */
+    margin-left: 20px;
+    /* Add margin to the right of the logo for spacing */
 }
 
 /* Navigation CSS */
@@ -68,6 +72,7 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    margin-top: 5px;
     margin-top: 5px;
     z-index: 1000;
 }
@@ -145,14 +150,14 @@ nav a {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 773px;
-    height: 360px;
+    width: 750px;
+    height: 300px;
     border-radius: 0px 0px 20px 20px;
     background: #8870A9;
 }
 
 #player-title-container {
-    width: 773px;
+    width: 750px;
     height: 90px;
     border-radius: 20px 20px 0px 0px;
     background: #402862;
@@ -172,12 +177,13 @@ nav a {
 #player2color-entry,
 #player1color-entry {
     color: white;
-    font-size: 20px;
+    font-size:10px;
+    margin: 15px;
 }
 
 ::placeholder {
     color: #858585;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #player1-name,
@@ -239,7 +245,7 @@ nav a {
     justify-content: center;
     flex-direction: column;
     width: 350px;
-    height:350px;
+    height: 350px;
     border-radius: 15px;
     background: #57328A;
     /* margin: 0 auto; */
@@ -283,8 +289,9 @@ h2 {
 }
 
 #player2 {
-    margin-right: 5px;
+    margin-top: 10px;
     margin-left: 20px;
+    margin-bottom: 15px;
 
 }
 
@@ -345,6 +352,7 @@ h2 {
     font-size: 0.75em;
     margin-bottom: 10px;
     display: flex;
+    margin: 0;
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -355,10 +363,35 @@ h2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
-    margin-top: 40px;
-   width: 75%;
-  
+    margin-top: 10px;
+    width: 600px;
+
 }
+
+.question {
+    font-size: 1em;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1982C4;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.player-turn {
+    font-size: 0.75em;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: #311354;
+
+}
+
 
 .option {
     padding: 10px;
@@ -379,22 +412,25 @@ h2 {
 
 /* Testing Submit button css */
 #submitBtn {
-    margin-top: 48px;
+    margin-top: 30px;
     background-color: #8F9499;
+    padding: 14px 90px;
     padding: 14px 90px;
     border-radius: 20px;
     border-bottom: 13px solid #7D8084;
     margin: 0 auto;
     margin-top: 40px;
+    margin-top: 40px;
     display: block;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
     color: white;
     font-weight: bold;
     font-size: 1em;
 }
 
-
-
-/* Footer-------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Footer--*/
 
 #footer-rect {
     width: 100%;
@@ -409,4 +445,116 @@ h2 {
     margin-left: 84px;
 }
 
-/* rules page */
+/* leadership page */
+.leader-heading {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0px;
+    padding-top: 20px;
+}
+
+.banner {
+    width: 500px;
+    height: auto;
+}
+
+.board-container {
+    width: 550px;
+    height: 450px;
+    border-radius: 15px;
+    border: 12px solid #8963BE;
+    background: #57328A;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.leaders-list {
+    padding: 0;
+}
+
+.leaders-list li {
+    margin-bottom: 3px;
+}
+
+.leaders-list li img {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.leader {
+    list-style-type: none;
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+    border-radius: 10px;
+    background: #886DAE;
+}
+
+.yellow {
+    border-radius: 10px;
+    border-bottom: 7px solid #E4B228;
+    background: #FFCA3A;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+.blue {
+    border-radius: 10px;
+    border-bottom: 7px solid #1174B1;
+    background: #1982C4;
+}
+
+.green {
+    border-radius: 10px;
+    border-bottom: 7px solid #79B716;
+    background: #8AC926;
+}
+
+.playagain-btn, .quit-btn {
+    all: unset;
+    width: 125px;
+    height: 40px;
+    border-radius: 15px;
+    border-bottom: 1px solid #FFF;
+    background: #71539A;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/* Modal CSS */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 150px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  
+  .modal-footer {
+    text-align: right;
+  }
+  

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,50 @@
     <link rel="stylesheet" href="./main.css">
     <script src="app.js"></script>
 </head>
+
 <body>
     <header>
         <!-- navigation bar -->
         <nav>
             <!-- <ul class="nav-links"> -->
             <div id="logo-container">
-                <a id="home" href="index.html">Home</a>
+                <a id="home" href="home.html">Home </a>
             </div>
             <div id="right-links">
                 <a id="rules" href="rules.html">Rules</a>
-              <div class="leadership-crown"> 
-                <img src="./assets/crown.png" alt="Black Crown">
-                <a id="leadership" href="leadership.html">Leadership Board </a>
-              </div>
+                <div class="leadership-crown">
+                    <img src="./assets/crown.png" alt="Black Crown">
+                    <a id="leadership" href="leadership.html">Leadership Board </a>
+                </div>
             </div>
             <!-- </ul> -->
         </nav>
     </header>
     <main>
-
+        <img class="banner" src="./assets/leaderboard-asset.png" alt="banner">
+        <div class="board-container">
+            <h1 class="leader-heading">LEADERBOARD</h1>
+            <ul class="leaders-list">
+                <li class="leader yellow"><img class="star-player" src="./assets/leader.svg" alt="star player">Name</li>
+                <li class="leader blue"> <img src="./assets/leader.svg" alt="">Name</li>
+                <li class="leader green"><img src="./assets/leader.svg" alt="">Name</li>
+                <li class="leader purple"><img src="./assets/leader.svg" alt="">Name</li>
+                <li class="leader purple"><img src="./assets/leader.svg" alt="">Name</li>
+                <li class="leader purple"><img src="./assets/leader.svg" alt="">Name</li>
+            </ul>
+            <div> <a href="./index.html"><button class="playagain-btn">Play Again</button></a>
+                <a href="./home.html"><button class="quit-btn">Quit</button></a> </div>
+           
+        </div>
     </main>
     <footer>
         <div id="footer-rect">
             <div id="volume-btn">
                 <img src="./assets/volume.png" alt="volume button">
             </div>
-    
+
         </div>
     </footer>
 </body>
+
 </html>
