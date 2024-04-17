@@ -42,7 +42,7 @@
                     </div>
                     <div id="player1color-entry">
                         <div class="color-options">
-                            <label for="player1-color">PLAYER 1 COLOR:</label>
+                            <label for="player1-color">PLAYER 1 COLOR:&nbsp;&nbsp;</label>
                             <span class="color" style="background-color: #FF595E;" onclick="selectColor('red')"></span>
                             <span class="color" style="background-color: #FFCA3A;"
                                 onclick="selectColor('yellow')"></span>
@@ -61,7 +61,7 @@
                     </div>
                     <div id="player2color-entry">
                         <div class="color-options">
-                            <label for="player2-color">PLAYER 2 COLOR:</label>
+                            <label for="player2-color">PLAYER 2 COLOR:&nbsp;&nbsp;</label>
                             <span class="color" style="background-color: #FF59EE;" onclick="selectColor('pink')"></span>
                             <span class="color" style="background-color: #FFA43A;"
                                 onclick="selectColor('orange')"></span>
@@ -79,9 +79,28 @@
 
         <script>
             function selectColor(color) {
-                //alert('Selected color: ' + color);
-                const selectedColor = document.querySelector(`.color[onclick="selectColor('${color}')"]`);
-                selectedColor.innerHTML = '&#10003;';
+         
+    const selectedColor = document.querySelector(`.color[onclick="selectColor('${color}')"]`);
+
+    // Check if the color is already selected
+    const isSelected = selectedColor.classList.contains('selected');
+
+    // If selected, remove the check mark and the 'selected' class
+    if (isSelected) {
+        selectedColor.innerHTML = ''; // Remove the check mark
+        selectedColor.classList.remove('selected'); // Remove the 'selected' class
+    } else {
+        // If not selected, remove the check mark and the 'selected' class from all colors
+        const allColors = document.querySelectorAll('.color');
+        allColors.forEach(colorElement => {
+            colorElement.innerHTML = ''; // Remove the check mark
+            colorElement.classList.remove('selected'); // Remove the 'selected' class
+        });
+
+        // Add the check mark and the 'selected' class to the clicked color
+        selectedColor.innerHTML = '&#10003;';
+        selectedColor.classList.add('selected');
+    }
             }
         </script>
     </main>
