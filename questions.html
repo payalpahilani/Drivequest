@@ -70,7 +70,7 @@
 <footer>
     <div id="footer-rect">
         <div id="volume-btn"onclick="toggleAudio()">
-            <img src="./assets/volume.png" alt="volume button"id="volume-icon">
+            <img src="./assets/volume.png"  onclick="playAudio('./assets/Sakura-Girl.mp3')"alt="volume button"id="volume-icon">
         </div>
     </div>
   
@@ -79,10 +79,11 @@
 <script>//--------Sound Button
  const volumeBtn = document.getElementById('volume-btn');
 const volumeIcon = document.getElementById('volume-icon');
-const audio = new Audio("./assets/Sakura-Girl-Motivation-music.mp3");
+const audio = new Audio("./assets/Sakura-Girl.mp3");
 
 volumeBtn.addEventListener("click", () => {
     audio.play();
+     
 });
 
 // Set initial state of audio
