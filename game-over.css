@@ -1,53 +1,148 @@
-/* styles.css */
-
 .logo img {
     height: 90px; 
     width: auto; 
     /* margin-right: 30px;  */
+    height: 90px;
+    width: auto;
     margin-top: 15px;
 }
 
 body {
 
+    font-family: Poppins;
+    font-weight: bold;
     background-color: #6A4C93;
-
-
 }
 
-.container {
-    width: 95%;
+.container { width: 95%;
     max-width: 100%;
     height: auto;
-    /* margin: 20px; */
-    /* padding: 20px; */
-    /*background-color: rgba(255, 255, 255, 0.8);  Add a semi-transparent background for better readability */
+    left: 0;
+}
+.custom-button {
+    border-radius: 8px;
+    width: 120px;
+    font-size: 15px;
+    height: 40px;
+    background-color: #71539A;
+    color: #FFF;
+    font-weight:700;
+}
+.overlay {
+    position: absolute;
+    top: 55%;
+    left: 45%;
+    transform: translate(-50%, -50%);
 }
 
-/* home page decorations */
+.button-below-title {
+    margin-top: 20px;
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 700;
+    width: 250px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 20%;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+.title-inside-image {
+    color: white; /* Color for visibility */
+    margin-left: 18%;
+    width: 330px;
+}
+    
+.button-below-title {
+    margin-top: 20px; 
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 700;
+    width: 250px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 20%;
+}
+    
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+/* Rules-Button */
+.rules-container {
+    position: relative;
+    margin-top: 30px; 
+}
+
+.rules-custom-button {
+    width: 90px;
+    height: 40px;
+    border-radius: 7px;
+    background-color: #3D1B6C;
+    color: #D8B7FF; /* Text color */
+    font-size: 20px; 
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer */
+    position: absolute;
+    top: 35px; /* Top Margin */
+    right: 0;
+    margin-right: 300px; /* Margin from the right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leader-custom-button {
+    width: 230px;
+    height: 40px;
+    border-radius: 7px;
+    background-color: black;
+    color: #8AC926; /* Text color */
+    font-size: 20px; 
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer */
+    position: absolute;
+    top: 35px; /* Top Margin */
+    right: 0;
+    margin-right: 50px; /* Adjust margin from the right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leader-custom-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    padding: 10%;
+    left: 50%;
+    transform: translate(-30px, -50px);
+    width: 8px;
+    height: 8px;
+    background-image: url(./assets/crown.png);
+    background-size: cover;
+  }
 
 .game-over img {
     height: 400px; 
     width: auto; 
     display:block;
-    justify-content: center;
-    margin-left: 33%;
+     /* margin-left: 33%;
+    margin-right: 33%; */
+    padding-left: 33%;
 }
-/* 
-.home-grid img {
-    height: 510px; 
-    width: auto; 
-    margin-left: 75%;
-    top: 0%;
-} */
 
-.title h1 {
-   
-    /* flex-shrink: 0; */
+h1 {
+    flex-shrink: 0;
     display: flex;
     justify-content: center;
 
     color: white;
-   
     text-align: center;
     margin: 0%;
 
@@ -58,7 +153,6 @@ body {
     font-weight: 700;
     line-height: normal;
 }
-
 
 .title b {
     display: flex;
@@ -75,26 +169,17 @@ body {
 }
 
 button {
-    /* width: 234px; 
-    height: 87px; 
-    flex-shrink: 0; 
-    border-radius: 20px; 
-    border-bottom: 13px solid #F5B133; 
-    background: #FFCA3A; 
-    color: #FFF;
-    font-size: 40px;
-    font-weight: 700;
-
-    margin-top: 3%;
-    margin-left: 40%;  */
     width: 328px;
     height: 73px;
+
     flex-shrink: 0;
     border-radius: 15px;
+
     border-bottom: 1px solid #FFF;
     background: #71539A;
     margin-left: 38%;
 }
+
 
 
 footer {
