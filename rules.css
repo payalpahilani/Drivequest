@@ -136,6 +136,14 @@ nav a {
     text-decoration: none;
 }
 
+.logo img {
+    height: 90px; 
+    width: auto; 
+    /* margin-right: 30px;  */
+    margin-top: 15px;
+}
+
+
 .leadership-crown {
     position: relative;
     display: inline-block;
