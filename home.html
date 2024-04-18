@@ -19,14 +19,8 @@
         <div class="title">
             <h1>DRIVE QUEST</h1>
             <b>LET THE QUEST BEGIN</b>
-            <a href="./index.html"><button>PLAY</button></a>
-            <!-- <button class="image-button">
-                <img src="./assets/play-button.png" alt="Play Button">
-            </button> -->
+            <a href="./index.html"><button onclick="resetGame()">PLAY</button></a>
         </div>
-        <!-- <div class="home-grid">
-            <img src="./assets/home-grid.png" alt="Home Grid">
-        </div> -->
     </div>
 
 
@@ -35,50 +29,39 @@
         <div id="volume-btn"onclick="toggleAudio()">
             <img src="./assets/mute.png"  onclick="playAudio('./assets/Sakura-Girl.mp3')"alt="volume button"id="volume-icon">
         </div>
-    </div>
-  
-</footer>
+    </footer>
 
-<script>//--------Sound Button
- const volumeBtn = document.getElementById('volume-btn');
-const volumeIcon = document.getElementById('volume-icon');
-const audio = new Audio("./assets/Sakura-Girl.mp3");
+    <script>
+        function resetGame() {
+            localStorage.setItem('player1Score', '0');
+            localStorage.setItem('player2Score', '0');
+            localStorage.removeItem('answeredGrids'); 
+        }
 
-volumeBtn.addEventListener("click", () => {
-    audio.play();
-     
-});
+        //--------Sound Button
+        const volumeBtn = document.getElementById('volume-btn');
+        const volumeIcon = document.getElementById('volume-icon');
+        const audio = new Audio("./assets/Sakura-Girl.mp3");
+        let isMuted = true;
+        audio.muted = isMuted;
 
-// Set initial state of audio
-let isMuted = true;
-audio.muted = isMuted;
+        volumeBtn.addEventListener("click", () => {
+            audio.play();
+        });
 
-// Function to toggle audio playback
-function toggleAudio() {
-    if (isMuted) {
-        // Unmute the audio
-        audio.muted = false;
-        isMuted = false;
-        // Change volume button icon to unmuted state
-        volumeIcon.src = './assets/volume.png';
-    } else {
-        // Mute the audio
-        audio.muted = true;
-        isMuted = true;
-        // Change volume button icon to muted state
-        volumeIcon.src = './assets/mute.png';
-    }
-}
-</script>
+        function toggleAudio() {
+            if (isMuted) {
+                audio.muted = false;
+                isMuted = false;
+                volumeIcon.src = './assets/volume.png';
+            } else {
+                audio.muted = true;
+                isMuted = true;
+                volumeIcon.src = './assets/mute.png';
+            }
+        }
+    </script>
 
-<!--Credits:
-    1.Ukulele:Chill Ukulele And Acoustic Guitar by LesFM | https://lesfm.net/
-Music promoted by https://www.chosic.com/free-music/all/
-Creative Commons CC BY 3.0
-https://creativecommons.org/licenses/by/3.0/
-    2.Motivation by Sakura Girl | https://soundcloud.com/sakuragirl_official
-Music promoted by https://www.chosic.com/free-music/all/
-Creative Commons CC BY 3.0
-https://creativecommons.org/licenses/by/3.0/-->
+    <!-- Credits omitted for brevity -->
 </body>
 </html>

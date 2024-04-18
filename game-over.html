@@ -10,16 +10,21 @@
 
 <body>
     <header>
-        <div class="logo">
-            <a href="home.html"> <img src="assets/logo-v01.png" alt="Logo"> </a>
-        </div>
-
+        <!-- navigation bar -->
+        <nav>
+            <div id="logo-container" class="logo">
+                <!-- <a id="home" href="home.html">Home</a> -->
+                <a href="./home.html"><img src="./assets/Logo_02.png" alt="logo"></a>
+            </div>
+            <div id="right-links">
+                <a id="rules" href="rules.html">Rules</a>
+                <div class="leadership-crown">
+                    <img src="./assets/crown.png" alt="Black Crown">
+                    <a id="leadership" href="leadership.html">Leadership Board </a>
+                </div>
+            </div>
+        </nav>
     </header>
-    <!-- Rules Button / Leadership Button-->
-    <div class="rulesButton-container">
-        <button class="rules-custom-button">RULES</button>
-        <button class="leader-custom-button">LEADERSHIP BOARD</button>
-    </div>
     <div class="container">
         <div class="game-over">
             <img src="./assets/game-over_1.png" alt="game-over">
@@ -40,43 +45,42 @@
         <div id="volume-btn"onclick="toggleAudio()">
             <img src="./assets/mute.png"  onclick="playAudio('./assets/Sakura-Girl.mp3')"alt="volume button"id="volume-icon">
         </div>
-    </div>
-  
-</footer>
 
-<script>//--------Sound Button
- const volumeBtn = document.getElementById('volume-btn');
-const volumeIcon = document.getElementById('volume-icon');
-const audio = new Audio("./assets/Sakura-Girl.mp3");
+    </footer>
 
-volumeBtn.addEventListener("click", () => {
-    audio.play();
-     
-});
+    <script>//--------Sound Button
+        const volumeBtn = document.getElementById('volume-btn');
+        const volumeIcon = document.getElementById('volume-icon');
+        const audio = new Audio("./assets/Sakura-Girl.mp3");
 
-// Set initial state of audio
-let isMuted = true;
-audio.muted = isMuted;
+        volumeBtn.addEventListener("click", () => {
+            audio.play();
 
-// Function to toggle audio playback
-function toggleAudio() {
-    if (isMuted) {
-        // Unmute the audio
-        audio.muted = false;
-        isMuted = false;
-        // Change volume button icon to unmuted state
-        volumeIcon.src = './assets/volume.png';
-    } else {
-        // Mute the audio
-        audio.muted = true;
-        isMuted = true;
-        // Change volume button icon to muted state
-        volumeIcon.src = './assets/mute.png';
-    }
-}
-</script>
+        });
 
-<!--Credits:
+        // Set initial state of audio
+        let isMuted = true;
+        audio.muted = isMuted;
+
+        // Function to toggle audio playback
+        function toggleAudio() {
+            if (isMuted) {
+                // Unmute the audio
+                audio.muted = false;
+                isMuted = false;
+                // Change volume button icon to unmuted state
+                volumeIcon.src = './assets/volume.png';
+            } else {
+                // Mute the audio
+                audio.muted = true;
+                isMuted = true;
+                // Change volume button icon to muted state
+                volumeIcon.src = './assets/mute.png';
+            }
+        }
+    </script>
+
+    <!--Credits:
     1.Ukulele:Chill Ukulele And Acoustic Guitar by LesFM | https://lesfm.net/
 Music promoted by https://www.chosic.com/free-music/all/
 Creative Commons CC BY 3.0
@@ -86,4 +90,5 @@ Music promoted by https://www.chosic.com/free-music/all/
 Creative Commons CC BY 3.0
 https://creativecommons.org/licenses/by/3.0/-->
 </body>
+
 </html>
