@@ -154,18 +154,47 @@
                         }
                 }
         </script>
+
         <script>
-                window.onload = function () {
+                window.onload = async function () {
+                        const playerNames = ['player1', 'player2'];
+                        const totalGridItems = document.querySelectorAll('.grid-item').length;
+                        let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
 
-                        let player1Score = localStorage.getItem('player1Score') || '0'; // Default to '0' if nothing is stored
-                        let player2Score = localStorage.getItem('player2Score') || '0'; // Default to '0' if nothing is stored
+                        // Fetch and display scores for each player
+                        for (const player of playerNames) {
+                                try {
+                                        const playerName = localStorage.getItem(player + 'Name');
+                                        const response = await fetch(`http://localhost:3000/get-player-score?playerName=${playerName}`);
+                                        const data = await response.json();
+                                        if (response.ok) {
+                                                document.getElementById(player).value = data.totalScore;
+                                        } else {
+                                                throw new Error(data.message);
+                                        }
+                                } catch (error) {
+                                        console.error('Failed to fetch scores:', error);
+                                        document.getElementById(player).value = 'Error';
+                                }
+                        }
 
-                        document.getElementById('player1').value = player1Score;
-                        document.getElementById('player2').value = player2Score;
+                        // Disable answered grids
+                        answeredGrids.forEach(function (index) {
+                                let gridItem = document.querySelectorAll('.grid-item')[parseInt(index)];
+                                if (gridItem) {
+                                        gridItem.onclick = null; // Disable click
+                                        gridItem.style.opacity = '0.5'; // Dim the item
+                                }
+                        });
+
+                        // Check if all grids are answered
+                        if (answeredGrids.length >= totalGridItems) {
+                                window.location.href = 'game-over.html'; // Redirect to the game-over page
+                        }
                 };
         </script>
 
-<!-- Credits:
+        <!-- Credits:
     1.Ukulele:Chill Ukulele And Acoustic Guitar by LesFM | https://lesfm.net/
  Music promoted by https://www.chosic.com/free-music/all/
  Creative Commons CC BY 3.0

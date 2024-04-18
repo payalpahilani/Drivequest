@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (beginBtn) {
         beginBtn.addEventListener('click', submitPlayerInfo);
     }
-});
+}); 
 
 function submitPlayerInfo(event) {
     event.preventDefault();  // Prevent any default form submission
