@@ -1,14 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  'Poppins', sans-serif;
+   
+  }
+
 body {
-    /* background-image: url(./assets/Background_01.png); */
     display: flex;
     flex-direction: column;
-    /* align-items: center;
-    justify-content: center; */
-    height: 100vh;
     margin: 0;
+    min-height: 100vh;
+    padding: 0;
     background-color: #6A4C93;
-    font-family: Poppins;
-    font-weight: bold;
+}
+/* Logo */
+.logo img {
+    height: 80px; 
+    width: auto;    
 }
 
 main {
@@ -16,17 +25,15 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+   /* height: 100vh;*/
     margin: 0;
     background-color: #6A4C93;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
 
 }
 
-/*Player's Info*/
+/*Player's Info-----------------------------------------------------------------------*/
 .player-info-box {
-    height: 400px;
+    height: 300px;
     width: 600px;
     background-color: #8870A9;
     color: white;
@@ -52,26 +59,13 @@ main {
     align-items: center;
 }
 
-/* 
-header {
-    background-image: url(./assets/Background_01.png); /* Light gray background for header 
-    padding: 20px;
-} */
+/* Navigation CSS ------------------------------------------------------------------------------------*/
 
-.logo img {
-    height: 90px;
-    /* Set the height of the logo */
-    width: auto;
-    /* Let the width adjust proportionally */
-    margin-left: 20px;
-    /* Add margin to the right of the logo for spacing */
-}
-
-/* Navigation CSS */
 nav {
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    margin-top: 5px;
     margin-top: 5px;
     z-index: 1000;
 }
@@ -79,6 +73,7 @@ nav {
 nav a {
     text-decoration: none;
 }
+
 
 .leadership-crown {
     position: relative;
@@ -116,7 +111,6 @@ nav a {
 }
 
 #logo-container {
-    margin-top: 20px;
     margin-left: 84px;
 }
 
@@ -150,14 +144,14 @@ nav a {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 773px;
-    height: 360px;
+    width: 750px;
+    height: 300px;
     border-radius: 0px 0px 20px 20px;
     background: #8870A9;
 }
 
 #player-title-container {
-    width: 773px;
+    width: 750px;
     height: 90px;
     border-radius: 20px 20px 0px 0px;
     background: #402862;
@@ -177,12 +171,13 @@ nav a {
 #player2color-entry,
 #player1color-entry {
     color: white;
-    font-size: 20px;
+    font-size:10px;
+    margin: 15px;
 }
 
 ::placeholder {
     color: #858585;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #player1-name,
@@ -208,6 +203,13 @@ nav a {
     margin-top: 23px;
 }
 
+.color.selected {
+    border: 2px solid white; 
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center;
+}
 .color {
     width: 20px;
     height: 20px;
@@ -215,6 +217,7 @@ nav a {
     margin-right: 10px;
     margin-top: 5px;
     cursor: pointer;
+    border: 2px solid white;
 }
 
 #begin-btn {
@@ -225,16 +228,15 @@ nav a {
     border-radius: 20px;
     border-bottom: 13px solid #7D8084;
 }
-
+a{
+    text-decoration: none;
+}
 
 /* Grid page css ------------------------------------------------------------------------------------------------------------------------------------*/
-
-
 
 .grid-container-wrapper {
     margin: 0 auto;
 }
-
 .grid-text {
     text-align: center;
 }
@@ -289,8 +291,9 @@ h2 {
 }
 
 #player2 {
-    margin-right: 5px;
+    margin-top: 10px;
     margin-left: 20px;
+    margin-bottom: 15px;
 
 }
 
@@ -305,88 +308,58 @@ h2 {
     margin: 10px;
 }
 
-.color-options {
-    display: flex;
-}
-
-.color {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-top: 5px;
-    cursor: pointer;
-    border: 2px solid white;
-}
 
 /* Styles for the question page --------------------------------------------------------------------------------------------------------------*/
 .question-container {
-    width: 600px;
+    width: 800px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     box-shadow: 0 0 10px #83BAF3;
     border-radius: 15px;
-    padding-top: 10px;
     margin-bottom: 20px;
     background-color: #83BAF3;
     color: white;
-    font-weight: bold;
-    font-size: 1.2em;
-    padding: 20px;
-    margin-top: 20px;
+    font-weight:400;
+    font-size: 1em;
 }
-
-#safeTimer {
-    display: flex;
-    margin: 0 auto;
-}
-
-
 
 .options-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
-    margin-top: 20px;
-    width: 600px;
-
+    margin-top: 10px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 800px;
 }
-
 .question {
-    font-size: 1em;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #1982C4;
-    padding: 25px;
+    padding: 20px;
     border-radius: 15px;
 }
 
 .player-turn {
-    font-size: 0.75em;
-    margin-bottom: 10px;
+    font-size: 1em;
+    margin:0;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
     color: #311354;
-
+    font-weight: 700;
 }
 
-
 .option {
-    padding: 10px;
+    padding: 20px;
     border-radius: 15px;
     background-color: #311354;
-    color: white;
     cursor: pointer;
-
-
-
 }
 
 .selected {
@@ -395,31 +368,39 @@ h2 {
     color: #311354;
 
 }
+/*Timer*/
+span{
+    font-weight: 700;
+    font-size: 2.2em;
+    color: #E4B228;
+  
 
+}
 /* Testing Submit button css */
 #submitBtn {
-    margin-top: 48px;
     background-color: #8F9499;
     padding: 14px 90px;
     border-radius: 20px;
     border-bottom: 13px solid #7D8084;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 10px;
     display: block;
     color: white;
     font-weight: bold;
     font-size: 1em;
+    cursor: pointer;
 }
 
+/* Footer------------------------------------------------------------------------------------*/
 
-
-/* Footer-------------------------------------------------------------------------------------------------------------------------------------------*/
-
-#footer-rect {
+footer{
     width: 100%;
     height: 88px;
     flex-shrink: 0;
     background: #432A66;
+    padding: 10px;
+    margin-top: auto;
+   
 }
 
 #volume-btn {
@@ -428,7 +409,7 @@ h2 {
     margin-left: 84px;
 }
 
-/* leadership page */
+/* leadership page -----------------------------------------------------------------------------------*/
 .leader-heading {
     color: #FFF;
     font-family: Poppins;
@@ -517,4 +498,142 @@ h2 {
 }
 
 
+/* Modal CSS ---------------------------------------------------------------------------------------*/
 
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 150px;
+    color:#2a2037;
+    transform: translate(-50%, -50%);
+    background-color:#eeebe3;
+    box-shadow: 0 0 20px  #71539A;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    margin-bottom: 20px;
+    align-items: center;
+    font-weight: 700    ;
+  }
+  .modal-btn {
+    border-radius: 40px;
+    box-shadow: 0 0 10px #1174B1;
+    font-size: 1em;
+    color: #141513;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 18px;
+  }
+  .modal-btn:hover {
+    background-color: #1174B1;
+    color: #FFF;
+  }
+  #modalbtn {
+    opacity: 1;
+}
+  .modal-footer {
+    text-align: right;
+  }
+ 
+/*Rules page ----------------------------------------------------------------------------------*/
+h1.title img {
+    width: 60px; 
+    height: auto; 
+    margin-left: 10px;
+}
+.title {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 50px;
+    margin-left: 7%;
+}
+  
+.description {
+    color: #FFF;
+    font-size: 16px;
+    width: 575px;
+    height: auto;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+  
+.image {
+    width: 265px;
+    height: 265px;
+    margin-top: 5px;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.license-image {
+   
+    /* height: 265px; */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+  
+.icons {
+    display: flex;
+    justify-content: space-between;
+    width: 215px;
+    margin-top: 10px;
+  }
+  
+  .icon {
+    width: 71.84px;
+    text-align: center;
+  }
+  
+  .icon img {
+    width: 100%;
+  }
+  
+  
+.icon-title {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+  
+.last-description {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 725px;
+    height: 90px;
+    text-align: center;
+    margin-top: 20px;
+    flex-shrink: 0;
+}
+.container-rules {
+    width: 100%;
+    min-height: calc(120vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.10);
+    justify-content: space-between;
+    padding-bottom: 100px;
+}
+   

@@ -19,19 +19,49 @@
         <div class="title">
             <h1>DRIVE QUEST</h1>
             <b>LET THE QUEST BEGIN</b>
-            <a href="./index.html"><button>PLAY</button></a>
-           
-            <!-- <button class="image-button">
-                <img src="./assets/play-button.png" alt="Play Button">
-            </button> -->
+            <a href="./index.html"><button onclick="resetGame()">PLAY</button></a>
         </div>
-        <!-- <div class="home-grid">
-            <img src="./assets/home-grid.png" alt="Home Grid">
-        </div> -->
     </div>
 
     <footer>
-        <p></p>
+        <div id="footer-rect">
+            <div id="volume-btn" onclick="toggleAudio()">
+                <img src="./assets/volume.png" onclick="playAudio('./assets/Sakura-Girl.mp3')" alt="volume button" id="volume-icon">
+            </div>
+        </div>
     </footer>
+
+    <script>
+        function resetGame() {
+            localStorage.setItem('player1Score', '0');
+            localStorage.setItem('player2Score', '0');
+            localStorage.removeItem('answeredGrids'); 
+        }
+
+        //--------Sound Button
+        const volumeBtn = document.getElementById('volume-btn');
+        const volumeIcon = document.getElementById('volume-icon');
+        const audio = new Audio("./assets/Sakura-Girl.mp3");
+        let isMuted = true;
+        audio.muted = isMuted;
+
+        volumeBtn.addEventListener("click", () => {
+            audio.play();
+        });
+
+        function toggleAudio() {
+            if (isMuted) {
+                audio.muted = false;
+                isMuted = false;
+                volumeIcon.src = './assets/volume.png';
+            } else {
+                audio.muted = true;
+                isMuted = true;
+                volumeIcon.src = './assets/mute.png';
+            }
+        }
+    </script>
+
+    <!-- Credits omitted for brevity -->
 </body>
 </html>
