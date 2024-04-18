@@ -216,6 +216,29 @@ function resetGameForNextTurn() {
     }
 }
 
+app.get('/top-players', async (req, res) => {
+    try {
+        const topPlayers = await Player.aggregate([
+            {
+                $project: {
+                    playerName: 1, 
+                    totalScore: { $sum: "$scores" } 
+                }
+            },
+            {
+                $sort: { totalScore: -1 }
+            },
+            {
+                $limit: 6 // Limit to the top 6 results
+            }
+        ]);
+
+        res.json(topPlayers);
+    } catch (error) {
+        console.error('Failed to retrieve top players:', error);
+        res.status(500).json({ message: "Failed to retrieve top players", error: error.message });
+    }
+});
 
 
 
