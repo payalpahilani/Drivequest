@@ -495,7 +495,7 @@ footer{
 }
 
 
-/* Modal CSS */
+/* Modal CSS ---------------------------------------------------------------------------------------*/
 
 .modal {
     position: fixed;
@@ -503,19 +503,38 @@ footer{
     left: 50%;
     width: 300px;
     height: 150px;
+    color:#2a2037;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color:#eeebe3;
+    box-shadow: 0 0 20px  #71539A;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
   }
   
   .modal-content {
     margin-bottom: 20px;
-    justify-content: center;
+    align-items: center;
+    font-weight: 700    ;
   }
-  
+  .modal-btn {
+    border-radius: 40px;
+    box-shadow: 0 0 10px #1174B1;
+    font-size: 1em;
+    color: #141513;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 18px;
+  }
+  .modal-btn:hover {
+    background-color: #1174B1;
+    color: #FFF;
+  }
+  #modalbtn {
+    opacity: 1;
+}
   .modal-footer {
     text-align: right;
   }
