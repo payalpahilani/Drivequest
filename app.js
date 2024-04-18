@@ -14,15 +14,21 @@ function submitPlayerInfo(event) {
     localStorage.setItem('player1Name', player1Name);
     localStorage.setItem('player2Name', player2Name);
 
+    // Initialize player scores to zero
+    localStorage.setItem('player1Score', '0');
+    localStorage.setItem('player2Score', '0');
+
+    // Submit player information and proceed to the game grid
     submitPlayer(player1Name, 1)
-      .then(() => submitPlayer(player2Name, 2))
-      .then(() => {
-          window.location.href = 'grid.html';  // Redirect on successful save
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
+        .then(() => submitPlayer(player2Name, 2))
+        .then(() => {
+            window.location.href = 'grid.html';  // Redirect on successful save
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
+
 
 
 function submitPlayer(name, number) {
@@ -264,7 +270,7 @@ function startTimer(duration, display, onTimerEnd) {
             alert("Time's up!");
             timerDisplay.textContent = "00:00"; // Set timer display to 00:00
             onTimerEnd(); // Call the callback function to switch player turn
-        }   
+        }       
     }, 1000);
 }
 
