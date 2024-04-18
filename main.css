@@ -281,12 +281,18 @@ h2 {
     font-size: 1.15em;
 }
 
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
-
-.score img:first-child {
+/*.score img:first-child {
     margin-top: 10px;
     margin-left: 20px;
-}
+}*/
 
 #player2 {
     margin-top: 10px;
