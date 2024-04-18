@@ -17,7 +17,8 @@ body {
 /* Logo */
 .logo img {
     height: 80px; 
-    width: auto;    
+    width: auto;   
+    /* margin-top: 10px;  */
 }
 
 main {
@@ -109,10 +110,10 @@ nav a {
     padding: 13px 27px;
   
 }
-
+/* 
 #logo-container {
     margin-left: 84px;
-}
+} */
 #right-links {
     margin-top: 20px;
     margin-right: 102px;
