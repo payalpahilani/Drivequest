@@ -14,15 +14,21 @@ function submitPlayerInfo(event) {
     localStorage.setItem('player1Name', player1Name);
     localStorage.setItem('player2Name', player2Name);
 
+    // Initialize player scores to zero
+    localStorage.setItem('player1Score', '0');
+    localStorage.setItem('player2Score', '0');
+
+    // Submit player information and proceed to the game grid
     submitPlayer(player1Name, 1)
-      .then(() => submitPlayer(player2Name, 2))
-      .then(() => {
-          window.location.href = 'grid.html';  // Redirect on successful save
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
+        .then(() => submitPlayer(player2Name, 2))
+        .then(() => {
+            window.location.href = 'grid.html';  // Redirect on successful save
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
+
 
 
 function submitPlayer(name, number) {
@@ -204,10 +210,13 @@ function resetGameForNextTurn() {
     // Switch to the other player
     currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
     document.querySelector('.player-turn').textContent = `${currentPlayer} - It's your turn!`;
-    if (currentPlayer === 'player1' ? 'player2' : 'player1') {
+    if (currentPlayer === 'player1' || currentPlayer === 'player2') {
         document.getElementById('submitBtn').removeAttribute('disabled');
+        startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn); // Restart the timer
     }
 }
+
+
 
 
 function showModal() {
@@ -226,23 +235,53 @@ function closeModal() {
 
 
 // countdown timer
-// function startTimer(duration, display) {
-//     var timer = duration, minutes, seconds;
-//     setInterval(function () {
-//         minutes = parseInt(timer / 60, 10)
-//         seconds = parseInt(timer % 60, 10);
-//         minutes = minutes < 10 ? "0" + minutes : minutes;
-//         seconds = seconds < 10 ? "0" + seconds : seconds;
-//         display.textContent = minutes + ":" + seconds;
-//         if (--timer < 0) {
-//             alert("Time's up!");
-//             timer = 30;
-//         }   
-//     }, 1000);
-// }
+document.addEventListener('DOMContentLoaded', function() {
+    // Add event listener for the begin button
+    const beginBtn = document.getElementById('begin-btn');
+    if (beginBtn) {
+        beginBtn.addEventListener('click', submitPlayerInfo);
+    }
 
-// window.onload = function () {
-//     var time = 60 / 2, // your time in seconds here
-//         display = document.querySelector('#safeTimerDisplay');
-//     startTimer(time, display);
-// };
+    // Call the function to start the timer
+    startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn);
+});
+
+// Function to start the countdown timer
+
+function startTimer(duration, display, onTimerEnd) {
+    let timer = duration, minutes, seconds;
+    display.innerHTML = ''; // Clear the content of the display element
+    const timerDisplay = document.createElement('span'); // Create a span element
+    display.appendChild(timerDisplay); // Append the span to the display element
+
+    // Apply CSS styles to the timer span
+    timerDisplay.style.fontWeight = '700';
+    timerDisplay.style.fontSize = '2.2em';
+    timerDisplay.style.color = '#E4B228';
+
+    const intervalId = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        timerDisplay.textContent = minutes + ":" + seconds;
+        if (--timer < 0) {
+            clearInterval(intervalId); // Clear the interval
+            alert("Time's up!");
+            timerDisplay.textContent = "00:00"; // Set timer display to 00:00
+            onTimerEnd(); // Call the callback function to switch player turn
+        }       
+    }, 1000);
+}
+
+
+// Function to switch player turn
+// Function to switch player turn
+function switchPlayerTurn() {
+    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
+    document.querySelector('.player-turn').textContent = `${currentPlayer} - It's your turn!`;
+    if (currentPlayer === 'player1' || currentPlayer === 'player2') {
+        document.getElementById('submitBtn').removeAttribute('disabled');
+        startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn); // Restart the timer
+    }
+}
