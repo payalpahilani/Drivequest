@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Question = require('./models/question.js');
@@ -81,6 +80,25 @@ app.patch('/update-score', async (req, res) => {
         res.status(500).json({ message: "Error fetching top players", error: error.message });
     }
 });
+
+app.get('/get-player-score', async (req, res) => {
+    const playerName = req.query.playerName;
+    if (!playerName) {
+        return res.status(400).json({ message: "Player name is required" });
+    }
+    try {
+        const player = await Player.findOne({ playerName: playerName });
+        if (!player) {
+            return res.status(404).json({ message: "Player not found" });
+        }
+        const totalScore = player.scores.reduce((a, b) => a + b, 0); // Sum scores
+        res.json({ totalScore });
+    } catch (error) {
+        console.error('Error fetching player score:', error);
+        res.status(500).json({ message: "Error fetching player score", error: error.message });
+    }
+});
+
 
 // Start the server
 const PORT = process.env.PORT || 3000;

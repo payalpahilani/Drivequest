@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DriveQuest</title>
         <link rel="stylesheet" href="./main.css">
-        <script src="app.js"></script>
 </head>
 
 <body>
@@ -112,11 +111,12 @@
         </div>
 
         <div id="questionContainer" style="display: none;"></div>
-
-        <footer>
+        
+            
+       <footer>
                 <div id="footer-rect">
                         <div id="volume-btn" onclick="toggleAudio()">
-                                <img src="./assets/volume.png" onclick="playAudio('./assets/Sakura-Girl.mp3')"
+                                <img src="./assets/mute.png" onclick="playAudio('./assets/Sakura-Girl.mp3')"
                                         alt="volume button" id="volume-icon">
                         </div>
                 </div>
@@ -154,46 +154,49 @@
                         }
                 }
         </script>
-
         <script>
                 window.onload = async function () {
-                        const playerNames = ['player1', 'player2'];
-                        const totalGridItems = document.querySelectorAll('.grid-item').length;
-                        let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
+    const playerNames = ['player1', 'player2'];
+    const totalGridItems = document.querySelectorAll('.grid-item').length;
+    let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
 
-                        // Fetch and display scores for each player
-                        for (const player of playerNames) {
-                                try {
-                                        const playerName = localStorage.getItem(player + 'Name');
-                                        const response = await fetch(`http://localhost:3000/get-player-score?playerName=${playerName}`);
-                                        const data = await response.json();
-                                        if (response.ok) {
-                                                document.getElementById(player).value = data.totalScore;
-                                        } else {
-                                                throw new Error(data.message);
-                                        }
-                                } catch (error) {
-                                        console.error('Failed to fetch scores:', error);
-                                        document.getElementById(player).value = 'Error';
-                                }
-                        }
+    // Fetch and display scores for each player
+    for (const player of playerNames) {
+        try {
+            const playerName = localStorage.getItem(player + 'Name');
+            console.log(`Fetching score for: ${playerName}`);
+            const response = await fetch(`http://localhost:3000/get-player-score?playerName=${playerName}`);
+            const data = await response.json();
+            console.log(`${playerName} score:`, data);
+            if (response.ok) {
+                document.getElementById(player).value = data.totalScore;
+            } else {
+                throw new Error(data.message);
+            }
+        } catch (error) {
+            console.error('Failed to fetch scores:', error);
+            document.getElementById(player).value = 'Error';
+        }
+    }
 
-                        // Disable answered grids
-                        answeredGrids.forEach(function (index) {
-                                let gridItem = document.querySelectorAll('.grid-item')[parseInt(index)];
-                                if (gridItem) {
-                                        gridItem.onclick = null; // Disable click
-                                        gridItem.style.opacity = '0.5'; // Dim the item
-                                }
-                        });
+    // Disable answered grids
+    answeredGrids.forEach(function (index) {
+        let gridItem = document.querySelectorAll('.grid-item')[parseInt(index)];
+        if (gridItem) {
+            gridItem.onclick = null; // Disable click
+            gridItem.style.opacity = '0.5'; // Dim the item
+        }
+    });
 
-                        // Check if all grids are answered
-                        if (answeredGrids.length >= totalGridItems) {
-                                window.location.href = 'game-over.html'; // Redirect to the game-over page
-                        }
-                };
+    // Check if all grids are answered
+    if (answeredGrids.length >= totalGridItems) {
+        window.location.href = 'game-over.html'; // Redirect to the game-over page
+    }
+};
+
         </script>
-
+        <script src="app.js"> </script>
+        
         <!-- Credits:
     1.Ukulele:Chill Ukulele And Acoustic Guitar by LesFM | https://lesfm.net/
  Music promoted by https://www.chosic.com/free-music/all/
