@@ -1,52 +1,48 @@
-//to store player info in database
-function submitPlayerInfo() {
+document.addEventListener('DOMContentLoaded', function() {
+    const beginBtn = document.getElementById('begin-btn');
+    if (beginBtn) {
+        beginBtn.addEventListener('click', submitPlayerInfo);
+    }
+});
+
+function submitPlayerInfo(event) {
+    event.preventDefault();  // Prevent any default form submission
+
     const player1Name = document.getElementById('player1-name').value;
     const player2Name = document.getElementById('player2-name').value;
 
-    // POST request to server endpoint to save player info
-    // Save player 1
-    fetch('http://localhost:3000/add-player', {
+    localStorage.setItem('player1Name', player1Name);
+    localStorage.setItem('player2Name', player2Name);
+
+    submitPlayer(player1Name, 1)
+      .then(() => submitPlayer(player2Name, 2))
+      .then(() => {
+          window.location.href = 'grid.html';  // Redirect on successful save
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+}
+
+
+function submitPlayer(name, number) {
+    return fetch('http://localhost:3000/add-player', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            playerName: player1Name,
-            playerNumber: 1,
-            scores: []
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ playerName: name, playerNumber: number, scores: [] })
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to save player 1 info');
-        }
-        // Save player 2
-        return fetch('http://localhost:3000/add-player', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                playerName: player2Name,
-                playerNumber: 2,
-                scores: []
-            }),
-        });
+        if (!response.ok) throw new Error(`Failed to save player ${number} info`);
+        return response.json();  // Assuming the server responds with JSON
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to save player 2 info');
-        }
-        // Both players saved successfully, redirect to grid page
-        window.location.href = 'grid.html';
-    })
-    .catch(error => {
-        console.error('Error:', error);
+    .then(data => {
+        console.log(`Player ${number} added:`, data);
     });
 }
 
-function loadQuestion(level) {
+function loadQuestion(level, gridIndex) {
     localStorage.setItem('currentLevel', level); // Store the level in localStorage
+    localStorage.setItem('currentGridIndex', gridIndex); // Store the grid index
     fetchQuestionFromBackend(level);
     document.getElementById('submitBtn').removeAttribute('disabled'); // Enable the submit button
 }
@@ -77,7 +73,7 @@ function fetchQuestionFromBackend(level) {
         });
 }
 
-let currentCorrectAnswerIndex;
+// let currentCorrectAnswerIndex;
 
 function displayQuestion(questionData) {
     const questionContainer = document.querySelector('.question');
@@ -114,6 +110,7 @@ let player1Score = 0;
 let player2Score = 0;
 let currentPlayer = 'player1';
 
+// This function is triggered when a player submits an answer
 function submitAnswer() {
     var selectedOption = document.querySelector('.option.selected');
     if (!selectedOption) {
@@ -125,53 +122,42 @@ function submitAnswer() {
     var correctAnswer = document.querySelector('.options-container').children[currentCorrectAnswerIndex].textContent;
     var feedbackText = '';
     var points = 0;
-    var currentLevel = localStorage.getItem('currentLevel'); // Retrieve the level from localStorage
 
     if (selectedOptionText.trim() === correctAnswer.trim()) {
         feedbackText = 'Correct! You earned 10 points.';
         points = 10;
+        let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
+        answeredGrids.push(localStorage.getItem('currentGridIndex'));
+        localStorage.setItem('answeredGrids', JSON.stringify(answeredGrids));
     } else {
         feedbackText = 'Incorrect! You lost 5 points.';
         points = -5;
     }
 
-    // Update the score based on the current player
-    if (currentPlayer === 'player1') {
-        player1Score += points;
-        document.getElementById('player1').value = player1Score;
-        // Update the score in the database for Player 1
-        updatePlayerScore('Player 1', currentLevel, points);
-    } else {
-        player2Score += points;
-        document.getElementById('player2').value = player2Score;
-        // Update the score in the database for Player 2
-        updatePlayerScore('Player 2', currentLevel, points);
-    }
+    updatePlayerScore(currentPlayer, points);
 
-    // Display the feedback in the modal
     document.getElementById('answerFeedback').textContent = feedbackText;
     document.getElementById('scoreFeedback').textContent = `Current Score: ${currentPlayer === 'player1' ? player1Score : player2Score}`;
     showModal();
 
-    // Reset selections for the next turn
-    var options = document.querySelectorAll('.option');
-    options.forEach(function(opt) {
-        opt.classList.remove('selected');
-    });
-    document.getElementById('submitBtn').setAttribute('disabled', 'true');
-
-    // Switch to the other player
-    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
-    document.querySelector('.player-turn').textContent = `${currentPlayer === 'player1' ? 'Player 1' : 'Player 2'} - It's your turn!`;
-    
-    // Enable the submit button for the next player
-    if (currentPlayer === 'player2') {
-        document.getElementById('submitBtn').removeAttribute('disabled');
-    }
+    resetGameForNextTurn();
 }
 
-function updatePlayerScore(playerName, level, points) {
-    // Send a POST request to update the player's score in the database
+window.onload = function () {
+    // Disable already answered grid items
+    let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
+    answeredGrids.forEach(function(index) {
+        let gridItem = document.querySelectorAll('.grid-item')[index];
+        if (gridItem) {
+            gridItem.onclick = null; // Remove the onclick event
+            gridItem.style.opacity = '0.5'; // Dim the grid item to indicate it's disabled
+        }
+    });
+};
+
+function updatePlayerScore(currentPlayer, points) {
+    let playerName = currentPlayer === 'player1' ? localStorage.getItem('player1Name') : localStorage.getItem('player2Name');
+    
     fetch('http://localhost:3000/update-score', {
         method: 'PATCH',
         headers: {
@@ -184,14 +170,45 @@ function updatePlayerScore(playerName, level, points) {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Failed to update player score');
+            return response.json().then(errorData => {
+                throw new Error('Failed to update player score: ' + errorData.message);
+            });
         }
-        console.log('Player score updated successfully');
+        return response.json();
+    })
+    .then(data => {
+        console.log('Score update response:', data);
+        if (currentPlayer === 'player1') {
+            player1Score += points;
+            localStorage.setItem('player1Score', player1Score); // Save to localStorage
+            document.getElementById('player1').value = player1Score;
+        } else {
+            player2Score += points;
+            localStorage.setItem('player2Score', player2Score); // Save to localStorage
+            document.getElementById('player2').value = player2Score;
+        }
     })
     .catch(error => {
         console.error('Error updating player score:', error);
     });
 }
+
+function resetGameForNextTurn() {
+    // Reset selections and switch players
+    var options = document.querySelectorAll('.option');
+    options.forEach(function(opt) {
+        opt.classList.remove('selected');
+    });
+    document.getElementById('submitBtn').setAttribute('disabled', 'false');
+
+    // Switch to the other player
+    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
+    document.querySelector('.player-turn').textContent = `${currentPlayer} - It's your turn!`;
+    if (currentPlayer === 'player1' ? 'player2' : 'player1') {
+        document.getElementById('submitBtn').removeAttribute('disabled');
+    }
+}
+
 
 function showModal() {
     document.getElementById('feedbackModal').style.display = 'block';
