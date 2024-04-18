@@ -72,6 +72,15 @@ app.patch('/update-score', async (req, res) => {
     }
   });  
 
+  app.get('/top-players', async (req, res) => {
+    try {
+        const players = await Player.find().sort({ totalScore: -1 }).limit(6);
+        res.json(players);
+    } catch (error) {
+        console.error('Failed to fetch top players:', error);
+        res.status(500).json({ message: "Error fetching top players", error: error.message });
+    }
+});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
