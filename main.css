@@ -693,3 +693,46 @@ footer {
     transform: translateX(-50%); 
 
 }
+
+/* Question decorator */
+
+.bottom-right-element {
+   /* background-image: url(./assets/questionsBackground.png);  */
+    /* width: 50%;
+    transform: translateY(-85%); 
+    margin-left: 90%;
+    right: 0px; */
+
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    z-index: 1700;
+}
+.bottom-right-element img {
+    width: 50%;
+    height: auto;
+    transform: translateX(100%);
+    justify-content: left;
+}   
+
+.bottom-right-element2 {
+    /* background-image: url(./assets/questionsBackground.png);  */
+     /* width: 50%;
+     transform: translateY(-85%); 
+     margin-left: 90%;
+     right: 0px; */
+ 
+     position: fixed;
+     bottom: -60px;
+     right: 0;
+     width: 50%;
+     z-index: 1000;
+ }
+ .bottom-right-element2 img {
+     width: 60%;
+     height: auto;
+     transform: translateX(-180%);
+     
+     justify-content: left;
+ }  
