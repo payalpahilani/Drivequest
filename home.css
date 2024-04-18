@@ -1,33 +1,29 @@
 /* styles.css */
-
+/* Done */
 .logo img {
     height: 90px; 
     width: auto; 
     /* margin-right: 30px;  */
     margin-top: 15px;
 }
-
+/* Done  */
 body {
     background-image: url(./assets/Background_03.png); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
-    /* background-color: #6A4C93; */
     overflow:hidden;
-
 }
 
+/* Done  */
 .container {
     width: 95%;
     max-width: 100%;
     height: auto;
-    /* margin: 20px; */
-    /* padding: 20px; */
-    /*background-color: rgba(255, 255, 255, 0.8);  Add a semi-transparent background for better readability */
 }
 
 /* home page decorations */
-
+/* Done  */
 .maple-leaf img {
     height: 70px; 
     width: auto; 
@@ -36,14 +32,7 @@ body {
     margin-top: 0%;
     margin-bottom: 0%;
 }
-/* 
-.home-grid img {
-    height: 510px; 
-    width: auto; 
-    margin-left: 75%;
-    top: 0%;
-} */
-
+/* Done  */
 .title h1 {
    
     /* flex-shrink: 0; */
@@ -63,7 +52,7 @@ body {
     line-height: normal;
 }
 
-
+/* Done  */
 .title b {
     display: flex;
     justify-content: center;
@@ -77,7 +66,7 @@ body {
     font-weight: 700;
     line-height: normal;
 }
-
+/* Done  */
 button {
     width: 234px; /* Set the width of the button */
     height: 87px; /* Set the height of the button */
