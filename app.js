@@ -204,10 +204,12 @@ function resetGameForNextTurn() {
     // Switch to the other player
     currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
     document.querySelector('.player-turn').textContent = `${currentPlayer} - It's your turn!`;
-    if (currentPlayer === 'player1' ? 'player2' : 'player1') {
+    if (currentPlayer === 'player1' || currentPlayer === 'player2') {
         document.getElementById('submitBtn').removeAttribute('disabled');
+        startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn); // Restart the timer
     }
 }
+
 
 
 function showModal() {
@@ -265,10 +267,12 @@ function startTimer(duration, display, onTimerEnd) {
 }
 
 // Function to switch player turn
+// Function to switch player turn
 function switchPlayerTurn() {
     currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
     document.querySelector('.player-turn').textContent = `${currentPlayer} - It's your turn!`;
-    if (currentPlayer === 'player1' ? 'player2' : 'player1') {
+    if (currentPlayer === 'player1' || currentPlayer === 'player2') {
         document.getElementById('submitBtn').removeAttribute('disabled');
+        startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn); // Restart the timer
     }
 }
