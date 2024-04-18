@@ -212,6 +212,7 @@ function resetGameForNextTurn() {
 
 
 
+
 function showModal() {
     document.getElementById('feedbackModal').style.display = 'block';
 }
@@ -240,6 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Function to start the countdown timer
+
 function startTimer(duration, display, onTimerEnd) {
     let timer = duration, minutes, seconds;
     display.innerHTML = ''; // Clear the content of the display element
@@ -265,6 +267,7 @@ function startTimer(duration, display, onTimerEnd) {
         }   
     }, 1000);
 }
+
 
 // Function to switch player turn
 // Function to switch player turn
