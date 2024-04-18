@@ -307,86 +307,55 @@ h2 {
 
 /* Styles for the question page --------------------------------------------------------------------------------------------------------------*/
 .question-container {
-    width: 75%;
+    width: 800px;
     display: flex;
     flex-direction: column; 
     margin: 0 auto;
     box-shadow: 0 0 10px #83BAF3;
     border-radius: 15px;
-    padding-top:10px;
     margin-bottom: 20px;
     background-color: #83BAF3;
     color: white;
     font-weight:400;
-    font-size: 1.2em;
-}
-
-.question {
     font-size: 1em;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1982C4;
-    padding: 25px;
-    border-radius: 15px;
 }
-.player-turn{
-    font-size: 0.75em;
-    margin-bottom: 10px;
-    display: flex;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    color:#311354;
 
-}
 .options-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     margin-top: 10px;
-    width: 600px;
-
+    margin: 0 auto;
+    padding: 20px;
+    width: 800px;
 }
-
 .question {
-    font-size: 1em;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #1982C4;
-    padding: 25px;
+    padding: 20px;
     border-radius: 15px;
 }
 
 .player-turn {
-    font-size: 0.75em;
-    margin-bottom: 5px;
+    font-size: 1em;
+    margin:0;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
     color: #311354;
-
+    font-weight: 700;
 }
 
-
 .option {
-    padding: 10px;
+    padding: 20px;
     border-radius: 15px;
     background-color: #311354;
-    color: white;
     cursor: pointer;
-
-
-
 }
 .selected {
     background-color:#1982C4;
@@ -394,25 +363,27 @@ h2 {
     color:#311354;
 
 }
+/*Timer*/
+span{
+    font-weight: 700;
+    font-size: 2.2em;
+    color: #E4B228;
+  
 
+}
 /* Testing Submit button css */
 #submitBtn {
-    margin-top: 30px;
     background-color: #8F9499;
-    padding: 14px 90px;
     padding: 14px 90px;
     border-radius: 20px;
     border-bottom: 13px solid #7D8084;
     margin: 0 auto;
-    margin-top: 40px;
-    margin-top: 40px;
+    margin-top: 10px;
     display: block;
     color: white;
     font-weight: bold;
     font-size: 1em;
-    color: white;
-    font-weight: bold;
-    font-size: 1em;
+    cursor: pointer;
 }
 
 /* Footer------------------------------------------------------------------------------------*/
