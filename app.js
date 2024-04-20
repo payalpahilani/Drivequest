@@ -143,7 +143,7 @@ function submitAnswer() {
     updatePlayerScore(currentPlayer, points);
 
     document.getElementById('answerFeedback').textContent = feedbackText;
-    document.getElementById('scoreFeedback').textContent = `Current Score: ${currentPlayer === 'player1' ? player1Score : player2Score}`;
+    // document.getElementById('scoreFeedback').textContent = `Current Score: ${currentPlayer === 'player1' ? player1Score : player2Score}`;
     showModal();
 
     resetGameForNextTurn();
@@ -187,11 +187,11 @@ function updatePlayerScore(currentPlayer, points) {
         if (currentPlayer === 'player1') {
             player1Score += points;
             localStorage.setItem('player1Score', player1Score); // Save to localStorage
-            document.getElementById('player1').value = player1Score;
+            // document.getElementById('player1').value = player1Score;
         } else {
             player2Score += points;
             localStorage.setItem('player2Score', player2Score); // Save to localStorage
-            document.getElementById('player2').value = player2Score;
+            // document.getElementById('player2').value = player2Score;
         }
     })
     .catch(error => {
@@ -297,8 +297,6 @@ function startTimer(duration, display, onTimerEnd) {
     }, 1000);
 }
 
-
-// Function to switch player turn
 // Function to switch player turn
 function switchPlayerTurn() {
     currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';

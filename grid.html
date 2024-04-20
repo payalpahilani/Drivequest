@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DriveQuest</title>
         <link rel="stylesheet" href="./main.css">
+        <script src="./app.js"></script>
 </head>
 
 <body>
@@ -104,8 +105,8 @@
                 <!--Players Score-->
                 <div class="score">
                         <img src="./assets/player1.png" style="width:40px" alt="player's icon"> <input type="text"
-                                id="player1" style="width:80px" placeholder="">
-                        <input type="text" id="player2" style="width:80px" placeholder=""><img
+                                id="player1" style="width:80px" placeholder="Score">
+                        <input type="text" id="player2" style="width:80px" placeholder="Score"><img
                                 src="./assets/player2.png" style="width:40px" alt="player's icon">
                 </div>
         </div>
@@ -155,10 +156,8 @@
                 }
         </script>
         <script>
-                window.onload = async function () {
+   window.onload = async function () {
     const playerNames = ['player1', 'player2'];
-    const totalGridItems = document.querySelectorAll('.grid-item').length;
-    let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
 
     // Fetch and display scores for each player
     for (const player of playerNames) {
@@ -166,13 +165,12 @@
             const playerName = localStorage.getItem(player + 'Name');
             console.log(`Fetching score for: ${playerName}`);
             const response = await fetch(`http://localhost:3000/get-player-score?playerName=${playerName}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch scores');
+            }
             const data = await response.json();
             console.log(`${playerName} score:`, data);
-            if (response.ok) {
-                document.getElementById(player).value = data.totalScore;
-            } else {
-                throw new Error(data.message);
-            }
+            document.getElementById(player).value = data.totalScore;
         } catch (error) {
             console.error('Failed to fetch scores:', error);
             document.getElementById(player).value = 'Error';
@@ -180,20 +178,21 @@
     }
 
     // Disable answered grids
+    let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
+    const gridItems = document.querySelectorAll('.grid-item');
     answeredGrids.forEach(function (index) {
-        let gridItem = document.querySelectorAll('.grid-item')[parseInt(index)];
+        let gridItem = gridItems[parseInt(index)];
         if (gridItem) {
             gridItem.onclick = null; // Disable click
-            gridItem.style.opacity = '0.5'; // Dim the item
+            gridItem.style.opacity = '0.3'; // Dim the item
         }
     });
 
     // Check if all grids are answered
-    if (answeredGrids.length >= totalGridItems) {
-        window.location.href = 'game-over.html'; // Redirect to the game-over page
+    if (answeredGrids.length === gridItems.length) {
+        window.location.href = 'game-over.html'; // Redirect to game-over page
     }
 };
-
         </script>
         <script src="app.js"> </script>
         

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Question = require('./models/question.js');
 const Player = require('./models/player.js');
 
+const app = express();
 app.use(cors());
 app.use(express.json());
 

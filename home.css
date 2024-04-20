@@ -107,4 +107,9 @@ footer {
     left: 50%; /* Align the footer horizontally */
     transform: translateX(-50%); 
 
+    #volume-btn {
+        display: flex;
+        padding-top: 17px;
+        margin-left: 84px;
+    }
 }
