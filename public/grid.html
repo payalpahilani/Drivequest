@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DriveQuest</title>
         <link rel="stylesheet" href="css/main.css">
-        <!-- <script src="app.js"></script> -->
+        <script src="app.js"></script>
 </head>
 
 <body>
@@ -104,10 +104,10 @@
                 </div>
                 <!--Players Score-->
                 <div class="score">
-                        <img src="assets/player1.png" style="width:40px" alt="player's icon"> <input type="text"
-                                id="player1" style="width:80px" placeholder="Score">
-                        <input type="text" id="player2" style="width:80px" placeholder="Score"><img
-                                src="assets/player2.png" style="width:40px" alt="player's icon">
+                        <img src="assets/player1.png" style="width:40px" alt="player's icon">
+                         <input type="text" id="player1" style="width:80px" placeholder="Score">
+                        <input type="text" id="player2" style="width:80px" placeholder="Score">
+                        <img src="assets/player2.png" style="width:40px" alt="player's icon">
                 </div>
         </div>
 
@@ -156,26 +156,27 @@
                 }
         </script>
         <script>
-   window.onload = async function () {
-    const playerNames = ['player1', 'player2'];
+        window.onload = async function () {
+                const playerNames = ['player1', 'player2']; // Adjust names as stored in localStorage or as used in your app
 
-    // Fetch and display scores for each player
-    for (const player of playerNames) {
-        try {
-            const playerName = localStorage.getItem(player + 'Name');
-            console.log(`Fetching score for: ${playerName}`);
-            const response = await fetch(`http://localhost:3000/get-player-score?playerName=${playerName}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch scores');
-            }
-            const data = await response.json();
-            console.log(`${playerName} score:`, data);
-            document.getElementById(player).value = data.totalScore;
-        } catch (error) {
-            console.error('Failed to fetch scores:', error);
-            document.getElementById(player).value = 'Error';
-        }
+// Fetch and display scores for each player
+for (const player of playerNames) {
+try {
+    const playerName = localStorage.getItem(player + 'Name');
+    console.log(`Fetching score for: ${playerName}`);
+    const response = await fetch(`http://localhost:3000/get-player-score?playerName=${playerName}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch scores');
     }
+    const data = await response.json();
+    console.log(`${playerName} score:`, data);
+    document.getElementById(player).value = data.totalScore;
+} catch (error) {
+    console.error('Failed to fetch scores:', error);
+    document.getElementById(player).value = 'Error';
+}
+}
+
 
     // Disable answered grids
     let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
