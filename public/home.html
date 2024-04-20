@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Setup</title>
-    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="./assets/Logo_02.png" alt="Logo">
+            <img src="assets/Logo_02.png" alt="Logo">
         </div>
     </header>
     <div class="container">
         <div class="maple-leaf">
-            <img src="./assets/home-maple-leaf.png" alt="Maple Leaf">
+            <img src="assets/home-maple-leaf.png" alt="Maple Leaf">
         </div>
         <div class="title">
             <h1>DRIVE QUEST</h1>
@@ -26,7 +26,7 @@
     <footer>
         <div>
             <div id="volume-btn" onclick="toggleAudio()">
-                <img src="./assets/volume.png" onclick="playAudio('./assets/Sakura-Girl.mp3')" alt="volume button"
+                <img src="assets/volume.png" onclick="playAudio('assets/Sakura-Girl.mp3')" alt="volume button"
                     id="volume-icon">
             </div>
         </div>
@@ -43,7 +43,7 @@
         //--------Sound Button
         const volumeBtn = document.getElementById('volume-btn');
         const volumeIcon = document.getElementById('volume-icon');
-        const audio = new Audio("./assets/Sakura-Girl.mp3");
+        const audio = new Audio("assets/Sakura-Girl.mp3");
         let isMuted = true;
         audio.muted = isMuted;
 
@@ -55,11 +55,11 @@
             if (isMuted) {
                 audio.muted = false;
                 isMuted = false;
-                volumeIcon.src = './assets/volume.png';
+                volumeIcon.src = 'assets/volume.png';
             } else {
                 audio.muted = true;
                 isMuted = true;
-                volumeIcon.src = './assets/mute.png';
+                volumeIcon.src = 'assets/mute.png';
             }
         }
     </script>

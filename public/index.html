@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Setup</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header>
+        <!-- navigation bar -->
+        <nav>
+            <!-- <ul class="nav-links"> -->
+            <div id="logo-container" class="logo">
+                <!-- <a id="home" href="index.html">Home</a> -->
+                <a href="public/home.html"><img src="assets/Logo_02.png" alt="logo"></a>
+            </div>
+            <div id="right-links">
+                <a id="rules" href="rules.html">Rules</a>
+                <div class="leadership-crown"> 
+                    <img src="assets/crown.png" alt="Black Crown">
+                    <a id="leadership" href="leadership.html">Leadership Board </a>
+                  </div>
+            </div>
+            <!-- </ul> -->
+        </nav>
+    </header>
+    <main>
+        <div id="player-setup">
+            <div id="player-title-container">
+                <h1 id="player-title">PLAYER INFO</h1>
+            </div>
+            <div id="player-entries">
+                <div id="player1-container">
+                    <div id="player1name-entry">
+                        <label for="player1-name" id="player1-label">PLAYER 1: </label><br>
+                        <input type="text" id="player1-name" class="rounded-input" placeholder="Enter Name">
+                    </div>
+                    <div id="player1color-entry">
+                        <div class="color-options">
+                            <label for="player1-color">PLAYER 1 COLOR:&nbsp;&nbsp;</label>
+                            <span class="color" style="background-color: #FF595E;" onclick="selectColor('red')"></span>
+                            <span class="color" style="background-color: #FFCA3A;"
+                                onclick="selectColor('yellow')"></span>
+                            <span class="color" style="background-color: #6A4C93;"
+                                onclick="selectColor('purple')"></span>
+                            <span class="color" style="background-color: #63B3E6;"
+                                onclick="selectColor('light-blue')"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="player2-container">
+                    <div id="player2name-entry">
+                        <label for="player2-name" id="player2-label">PLAYER 2: </label><br>
+                        <input type="text" id="player2-name" class="rounded-input" placeholder="Enter Name">
+                    </div>
+                    <div id="player2color-entry">
+                        <div class="color-options">
+                            <label for="player2-color">PLAYER 2 COLOR:&nbsp;&nbsp;</label>
+                            <span class="color" style="background-color: #FF59EE;" onclick="selectColor('pink')"></span>
+                            <span class="color" style="background-color: #FFA43A;"
+                                onclick="selectColor('orange')"></span>
+                            <span class="color" style="background-color: #8AC926;"
+                                onclick="selectColor('green')"></span>
+                            <span class="color" style="background-color: #1982C4;"
+                                onclick="selectColor('dark-blue')"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" id="begin-btn" onclick="submitPlayerInfo()">Begin</button>
+
+        <script>
+            function selectColor(color) {
+         
+    const selectedColor = document.querySelector(`.color[onclick="selectColor('${color}')"]`);
+
+    // Check if the color is already selected
+    const isSelected = selectedColor.classList.contains('selected');
+
+    // If selected, remove the check mark and the 'selected' class
+    if (isSelected) {
+        selectedColor.innerHTML = ''; // Remove the check mark
+        selectedColor.classList.remove('selected'); // Remove the 'selected' class
+    } else {
+        // If not selected, remove the check mark and the 'selected' class from all colors
+        const allColors = document.querySelectorAll('.color');
+        allColors.forEach(colorElement => {
+            colorElement.innerHTML = ''; // Remove the check mark
+            colorElement.classList.remove('selected'); // Remove the 'selected' class
+        });
+
+        // Add the check mark and the 'selected' class to the clicked color
+        selectedColor.innerHTML = '<span class="checkmark"style="color:white;">&#10003;</span>';
+        selectedColor.classList.add('selected');
+    }
+            }
+        </script>
+        <script src="app.js"></script>
+    </main>
+</body>
+
+<footer>
+    <div id="footer-rect">
+        <div id="volume-btn"onclick="toggleAudio()">
+            <img src="assets/volume.png"  onclick="playAudio('assets/Sakura-Girl.mp3')"alt="volume button"id="volume-icon">
+        </div>
+    </div>
+  
+</footer>
+
+<script>//--------Sound Button
+ const volumeBtn = document.getElementById('volume-btn');
+const volumeIcon = document.getElementById('volume-icon');
+const audio = new Audio("assets/Sakura-Girl.mp3");
+
+volumeBtn.addEventListener("click", () => {
+    audio.play();
+     
+});
+
+// Set initial state of audio
+let isMuted = true;
+audio.muted = isMuted;
+
+// Function to toggle audio playback
+function toggleAudio() {
+    if (isMuted) {
+        // Unmute the audio
+        audio.muted = false;
+        isMuted = false;
+        // Change volume button icon to unmuted state
+        volumeIcon.src = 'assets/volume.png';
+    } else {
+        // Mute the audio
+        audio.muted = true;
+        isMuted = true;
+        // Change volume button icon to muted state
+        volumeIcon.src = 'assets/mute.png';
+    }
+}
+
+</script>
+
+<!--Credits:
+    1.Ukulele:Chill Ukulele And Acoustic Guitar by LesFM | https://lesfm.net/
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/
+    2.Motivation by Sakura Girl | https://soundcloud.com/sakuragirl_official
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/-->
+
+</html>

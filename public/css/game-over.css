@@ -202,7 +202,7 @@ body {
     transform: translate(-30px, -50px);
     width: 8px;
     height: 8px;
-    background-image: url(./assets/crown.png);
+    background-image: url(assets/crown.png);
     background-size: cover;
 }
 

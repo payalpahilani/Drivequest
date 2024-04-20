@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo-container" class="logo">
+                <a href="public/home.html"><img src="assets/Logo_02.png" alt="logo"></a>
+            </div>
+            <div id="right-links">
+                <a id="rules" href="rules.html">Rules</a>
+                <div class="leadership-crown">
+                    <img src="assets/crown.png" alt="Black Crown">
+                    <a id="leadership" href="leadership.html">Leadership Board </a>
+                </div>
+            </div>
+        </nav>
+    <main>
+        <div class="container-rules">
+            <h1 class="title">HOW TO PLAY <img src="assets/rules_leaf.png" alt="rules-leaf"></h1>
+            <p class="description">Drive Quest is a challenging game designed to help players improve their understanding of driving principles and skills. By using questions from the MTO Driver’s Handbook, it aims to prepare Canadians, especially those in Ontario, for their G1 test, boosting their confidence in the process.</p>
+            <div class="image">
+                <img src="assets/Rules_img_1.png" alt="rules-grid">
+            </div>
+            <p class="description">Players engage with a 5x5 grid featuring question blocks in Drive Quest. To initiate the game, the first player selects a question square by clicking on it.</p>
+            <div class="icons">
+              <div class="icon">
+                <p class="icon-title">Easy</p>
+                <img src="assets/Rules_img_2.png" alt="Icon 1">
+                
+              </div>
+              <div class="icon">
+                <p class="icon-title">Medium</p>
+                <img src="assets/rules_img_03.png" alt="Icon 2">
+                
+              </div>
+              <div class="icon">
+                <p class="icon-title">Hard</p>
+                <img src="assets/Rules_img_4.png" alt="Icon 3">
+                
+              </div>
+            </div>
+            <p class="description">There are a total of 3 different question levels.  White being the easiest and red being the hardest. The harder the question, the more points you can earn.</p>
+            <div class="image">
+                <img src="assets/rules_img_5.png" alt="rules-grid">
+            </div>
+            <p class="description">Players take turns answering various driving related questions until there are no more questions left in the grid.</p>
+            <div class="license-image">
+                <img src="assets/rules_img_6.png" alt="rules-grid">
+            </div>
+            <p class="description">Win the game and earn your license when you get  more correct answers than your opponent!</p> 
+        </div>
+    </main>
+</body>
+
+<script>//----------------------------------Sound Button
+ const volumeBtn = document.getElementById('volume-btn');
+const volumeIcon = document.getElementById('volume-icon');
+const audio = new Audio("assets/Sakura-Girl.mp3");
+
+volumeBtn.addEventListener("click", () => {
+    audio.play();
+     
+});
+
+// Set initial state of audio
+let isMuted = true;
+audio.muted = isMuted;
+
+// Function to toggle audio playback
+function toggleAudio() {
+    if (isMuted) {
+        // Unmute the audio
+        audio.muted = false;
+        isMuted = false;
+        // Change volume button icon to unmuted state
+        volumeIcon.src = 'assets/volume.png';
+    } else {
+        // Mute the audio
+        audio.muted = true;
+        isMuted = true;
+        // Change volume button icon to muted state
+        volumeIcon.src = 'assets/mute.png';
+    }
+}
+</script>
+
+<!--Credits:
+    1.Ukulele:Chill Ukulele And Acoustic Guitar by LesFM | https://lesfm.net/
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/
+    2.Motivation by Sakura Girl | https://soundcloud.com/sakuragirl_official
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/-->
+
+
+</html>
