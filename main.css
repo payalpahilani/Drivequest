@@ -388,7 +388,7 @@ span{
     cursor: pointer;
 }
 
-/* Footer------------------------------------------------------------------------------------*/
+/* Footer */
 
 footer{
     width: 100%;
@@ -406,7 +406,7 @@ footer{
     margin-left: 84px;
 }
 
-/* leadership page -----------------------------------------------------------------------------------*/
+/* leadership page */
 .leader-heading {
     color: #FFF;
     font-family: Poppins;
@@ -495,7 +495,7 @@ footer{
 }
 
 
-/* Modal CSS ---------------------------------------------------------------------------------------*/
+/* Modal CSS */
 
 .modal {
     position: fixed;
@@ -539,7 +539,7 @@ footer{
     text-align: right;
   }
  
-/*Rules page ----------------------------------------------------------------------------------*/
+/*Rules page */
 h1.title img {
     width: 60px; 
     height: auto; 

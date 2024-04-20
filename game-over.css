@@ -113,6 +113,7 @@ body {
 
 .game-over img {
     height: 400px;
+    justify-content: center;
     width: auto;
     display: block;
     padding-left: 33%;
@@ -205,16 +206,20 @@ body {
     background-size: cover;
 }
 
-/* Footer Styles */
-footer {
-    width: 195%;
-    max-width: 100%;
-    height: 68px;
-    margin-bottom: 0%;
-    background-color: #432A66;
+/* Footer */
+
+footer{
+    width: 100%;
+    height: 88px;
+    flex-shrink: 0;
+    background: #432A66;
+    padding: 10px;
+    margin-top: auto;
+   
+}
+
+#volume-btn {
     display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    padding-top: 17px;
+    margin-left: 84px;
 }

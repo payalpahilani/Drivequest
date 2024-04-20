@@ -121,19 +121,33 @@ https://creativecommons.org/licenses/by/3.0/-->
     <script src="app.js"></script>
     <script src="script.js"></script>
     <script>
-        window.onload = function () {
-
-            let player1Score = localStorage.getItem('player1Score') || '0'; // Default to '0' if nothing is stored
-            let player2Score = localStorage.getItem('player2Score') || '0'; // Default to '0' if nothing is stored
-
-            document.getElementById('player1').value = player1Score;
-            document.getElementById('player2').value = player2Score;
+        window.onload = async function () {
 
             const questionData = JSON.parse(localStorage.getItem('currentQuestion'));
             const currentLevel = localStorage.getItem('currentLevel'); // Retrieve the level from localStorage
             if (questionData) {
                 displayQuestion(questionData);
             }
+
+            const playerNames = ['player1', 'player2']; // Adjust names as stored in localStorage or as used in your app
+
+        // Fetch and display scores for each player
+        for (const player of playerNames) {
+        try {
+            const playerName = localStorage.getItem(player + 'Name');
+            console.log(`Fetching score for: ${playerName}`);
+            const response = await fetch(`http://localhost:3000/get-player-score?playerName=${playerName}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch scores');
+            }
+            const data = await response.json();
+            console.log(`${playerName} score:`, data);
+            document.getElementById(player).value = data.totalScore;
+        } catch (error) {
+            console.error('Failed to fetch scores:', error);
+            document.getElementById(player).value = 'Error';
+        }
+        }
         };
     </script>
 </body>

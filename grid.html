@@ -156,11 +156,11 @@
                 }
         </script>
         <script>
-    window.onload = async function () {
-        const playerNames = ['player1', 'player2']; // Adjust names as stored in localStorage or as used in your app
+   window.onload = async function () {
+    const playerNames = ['player1', 'player2'];
 
-        // Fetch and display scores for each player
-        for (const player of playerNames) {
+    // Fetch and display scores for each player
+    for (const player of playerNames) {
         try {
             const playerName = localStorage.getItem(player + 'Name');
             console.log(`Fetching score for: ${playerName}`);
@@ -177,18 +177,22 @@
         }
     }
 
-        // Disable answered grids
-        let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
-        answeredGrids.forEach(function (index) {
-            let gridItem = document.querySelectorAll('.grid-item')[parseInt(index)];
-            if (gridItem) {
-                gridItem.onclick = null; // Disable click
-                gridItem.style.opacity = '0.5'; // Dim the item
-            }
-        });
-    };
+    // Disable answered grids
+    let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
+    const gridItems = document.querySelectorAll('.grid-item');
+    answeredGrids.forEach(function (index) {
+        let gridItem = gridItems[parseInt(index)];
+        if (gridItem) {
+            gridItem.onclick = null; // Disable click
+            gridItem.style.opacity = '0.3'; // Dim the item
+        }
+    });
 
-
+    // Check if all grids are answered
+    if (answeredGrids.length === gridItems.length) {
+        window.location.href = 'game-over.html'; // Redirect to game-over page
+    }
+};
         </script>
         <script src="app.js"> </script>
         
