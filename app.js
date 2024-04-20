@@ -143,7 +143,7 @@ function submitAnswer() {
     updatePlayerScore(currentPlayer, points);
 
     document.getElementById('answerFeedback').textContent = feedbackText;
-    document.getElementById('scoreFeedback').textContent = `Current Score: ${currentPlayer === 'player1' ? player1Score : player2Score}`;
+    // document.getElementById('scoreFeedback').textContent = `Current Score: ${currentPlayer === 'player1' ? player1Score : player2Score}`;
     showModal();
 
     resetGameForNextTurn();
