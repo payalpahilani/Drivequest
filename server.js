@@ -7,6 +7,12 @@ const Player = require('./models/player.js');
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public')); 
+
+app.get('/', (req, res) => {
+    res.send('Welcome to DriveQuest!');
+});
+
 
 // MongoDB connection
 mongoose.connect('mongodb+srv://payalp:drivequest2024@atlascluster.zrn4s0n.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster', {
