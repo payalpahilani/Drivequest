@@ -88,7 +88,7 @@ function fetchQuestionFromBackend(level) {
             if (data.length > 0) {
                 const questionData = data[0];
                 localStorage.setItem('currentQuestion', JSON.stringify(questionData));
-                window.location.href = 'questions.html'; // Redirect after storing the data
+                window.location.href = 'https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html'; // Redirect after storing the data
             } else {
                 console.error('No questions available for this level');
             }
