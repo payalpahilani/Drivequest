@@ -1,23 +1,26 @@
+// Declare player scores at the top level to ensure they are accessible globally
+let player1Score = 0;
+let player2Score = 0;
+let currentPlayer = 'player1';
+
 document.addEventListener('DOMContentLoaded', function() {
     const beginBtn = document.getElementById('begin-btn');
     if (beginBtn) {
-        beginBtn.addEventListener('click', function(event) {
-            submitPlayerInfo(event);
-        });
+        beginBtn.addEventListener('click', submitPlayerInfo);
     }
+
+    // Set up any other event listeners or initial setup
+    startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn);
 });
 
 function submitPlayerInfo(event) {
-    event.preventDefault();  // Prevent any default form submission
+    event.preventDefault();
 
     const player1Name = document.getElementById('player1-name').value;
     const player2Name = document.getElementById('player2-name').value;
 
     localStorage.setItem('player1Name', player1Name);
     localStorage.setItem('player2Name', player2Name);
-
-    localStorage.setItem('player1Score', '0');
-    localStorage.setItem('player2Score', '0');
 
     submitPlayer(player1Name, 1)
         .then(() => submitPlayer(player2Name, 2))
@@ -46,20 +49,17 @@ function submitPlayer(name, number) {
 }
 
 function loadQuestion(level, gridIndex) {
-    localStorage.setItem('currentLevel', level); // Store the level in localStorage
-    localStorage.setItem('currentGridIndex', gridIndex); // Store the grid index
+    localStorage.setItem('currentLevel', level);
+    localStorage.setItem('currentGridIndex', gridIndex);
     fetchQuestionFromBackend(level);
-    document.getElementById('submitBtn').removeAttribute('disabled'); // Enable the submit button
 }
 
 function fetchQuestionFromBackend(level) {
-    // First, fetch the count of questions for the specified level
     fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}`)
         .then(response => response.json())
         .then(data => {
             const count = data.count;
             const randomIndex = Math.floor(Math.random() * count);
-            // Then, fetch a random question using the random index
             return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
         })
         .then(response => response.json())
@@ -77,88 +77,6 @@ function fetchQuestionFromBackend(level) {
             console.error('Error fetching question:', error);
         });
 }
-
-// let currentCorrectAnswerIndex;
-
-function displayQuestion(questionData) {
-    const questionContainer = document.querySelector('.question');
-    questionContainer.textContent = questionData.question;
-    const optionsContainer = document.querySelector('.options-container');
-    optionsContainer.innerHTML = '';
-
-    if (Array.isArray(questionData.options) && questionData.options.length > 0) {
-        questionData.options.forEach((option, index) => {
-            const optionElement = document.createElement('div');
-            optionElement.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
-            optionElement.classList.add('option');
-            optionElement.addEventListener('click', () => selectOption(optionElement, questionData.correctAnswerIndex));
-            optionsContainer.appendChild(optionElement);
-        });
-    } else {
-        console.error('No options available for the question');
-    }
-
-    currentCorrectAnswerIndex = questionData.correctAnswerIndex;
-    document.getElementById('submitBtn').removeAttribute('disabled');
-}
-
-function selectOption(option, correctAnswerIndex) {
-    var options = document.querySelectorAll('.option');
-    options.forEach(function(opt) {
-        opt.classList.remove('selected');
-    });
-    option.classList.add('selected');
-    currentCorrectAnswerIndex = correctAnswerIndex; // Update the current correct answer index
-}
-
-let player1Score = 0;
-let player2Score = 0;
-let currentPlayer = 'player1';
-
-// This function is triggered when a player submits an answer
-function submitAnswer() {
-    var selectedOption = document.querySelector('.option.selected');
-    if (!selectedOption) {
-        alert('Please select an option before submitting.');
-        return;
-    }
-    
-    var selectedOptionText = selectedOption.textContent;
-    var correctAnswer = document.querySelector('.options-container').children[currentCorrectAnswerIndex].textContent;
-    var feedbackText = '';
-    var points = 0;
-
-    if (selectedOptionText.trim() === correctAnswer.trim()) {
-        feedbackText = 'Correct! You earned 10 points.';
-        points = 10;
-        let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
-        answeredGrids.push(localStorage.getItem('currentGridIndex'));
-        localStorage.setItem('answeredGrids', JSON.stringify(answeredGrids));
-    } else {
-        feedbackText = 'Incorrect! You lost 5 points.';
-        points = -5;
-    }
-
-    updatePlayerScore(currentPlayer, points);
-
-    document.getElementById('answerFeedback').textContent = feedbackText;
-    // document.getElementById('scoreFeedback').textContent = `Current Score: ${currentPlayer === 'player1' ? player1Score : player2Score}`;
-    showModal();
-
-    resetGameForNextTurn();
-}
-
-window.onload = function () {
-    // Disable already answered grid items
-    let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
-    answeredGrids.forEach(function(index) {
-        let gridItem = document.querySelectorAll('.grid-item')[index];
-        if (gridItem) {
-            gridItem.onclick = null; // Remove the onclick event
-            gridItem.style.opacity = '0.5'; // Dim the grid item to indicate it's disabled
-        }
-    });
-};
 
 function updatePlayerScore(currentPlayer, points) {
     let playerName = currentPlayer === 'player1' ? localStorage.getItem('player1Name') : localStorage.getItem('player2Name');
@@ -185,12 +103,8 @@ function updatePlayerScore(currentPlayer, points) {
         console.log('Score update response:', data);
         if (currentPlayer === 'player1') {
             player1Score += points;
-            localStorage.setItem('player1Score', player1Score); // Save to localStorage
-            // document.getElementById('player1').value = player1Score;
         } else {
             player2Score += points;
-            localStorage.setItem('player2Score', player2Score); // Save to localStorage
-            // document.getElementById('player2').value = player2Score;
         }
     })
     .catch(error => {
