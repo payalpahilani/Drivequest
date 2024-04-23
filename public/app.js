@@ -54,41 +54,21 @@ function loadQuestion(level, gridIndex) {
     fetchQuestionFromBackend(level);
 }
 
-// function fetchQuestionFromBackend(level) {
-//     fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             const count = data.count;
-//             const randomIndex = Math.floor(Math.random() * count);
-//             return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.length > 0) {
-//                 const questionData = data[0];
-//                 console.log('Question data before storing:', questionData);
-//                 localStorage.setItem('currentQuestion', JSON.stringify(questionData));
-//                 window.location.href = 'questions.html'; // Redirect after storing the data
-//             } else {
-//                 console.error('No questions available for this level');
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error fetching question:', error);
-//         });
-// }
-
 function fetchQuestionFromBackend(level) {
     fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}`)
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.json();
+        .then(response => response.json())
+        .then(data => {
+            const count = data.count;
+            const randomIndex = Math.floor(Math.random() * count);
+            return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
         })
+        .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
                 const questionData = data[0];
+                console.log('Question data before storing:', questionData);
                 localStorage.setItem('currentQuestion', JSON.stringify(questionData));
-                window.location.href = 'https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html'; // Redirect after storing the data
+                window.location.href = 'questions.html'; // Redirect after storing the data
             } else {
                 console.error('No questions available for this level');
             }
@@ -97,8 +77,6 @@ function fetchQuestionFromBackend(level) {
             console.error('Error fetching question:', error);
         });
 }
-
-
 
 function displayQuestion(questionData) {
     const questionContainer = document.querySelector('.question');
@@ -208,4 +186,87 @@ function updatePlayerScore(currentPlayer, points) {
     .catch(error => {
         console.error('Error updating player score:', error);
     });
+}
+
+
+function resetGameForNextTurn() {
+    // Reset selections and switch players
+    var options = document.querySelectorAll('.option');
+    options.forEach(function(opt) {
+        opt.classList.remove('selected');
+    });
+    document.getElementById('submitBtn').setAttribute('disabled', 'false');
+
+    // Switch to the other player
+    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
+    document.querySelector('.player-turn').textContent = `${currentPlayer} - It's your turn!`;
+    if (currentPlayer === 'player1' || currentPlayer === 'player2') {
+        document.getElementById('submitBtn').removeAttribute('disabled');
+        startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn); // Restart the timer
+    }
+}
+
+function showModal() {
+    document.getElementById('feedbackModal').style.display = 'block';
+}
+
+function closeModal() {
+    const answerFeedback = document.getElementById('answerFeedback').textContent;
+    const pointsEarned = answerFeedback.includes('Correct') && answerFeedback.includes('10 points');
+    if (pointsEarned) {
+        window.location.href = 'grid.html';
+    } else {
+        document.getElementById('feedbackModal').style.display = 'none';
+    }
+}
+
+
+// countdown timer
+document.addEventListener('DOMContentLoaded', function() {
+    // Add event listener for the begin button
+    const beginBtn = document.getElementById('begin-btn');
+    if (beginBtn) {
+        beginBtn.addEventListener('click', submitPlayerInfo);
+    }
+
+    // Call the function to start the timer
+    startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn);
+});
+
+// Function to start the countdown timer
+
+function startTimer(duration, display, onTimerEnd) {
+    let timer = duration, minutes, seconds;
+    display.innerHTML = ''; // Clear the content of the display element
+    const timerDisplay = document.createElement('span'); // Create a span element
+    display.appendChild(timerDisplay); // Append the span to the display element
+
+    // Apply CSS styles to the timer span
+    timerDisplay.style.fontWeight = '700';
+    timerDisplay.style.fontSize = '2.2em';
+    timerDisplay.style.color = '#E4B228';
+
+    const intervalId = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        timerDisplay.textContent = minutes + ":" + seconds;
+        if (--timer < 0) {
+            clearInterval(intervalId); // Clear the interval
+            alert("Time's up!");
+            timerDisplay.textContent = "00:00"; // Set timer display to 00:00
+            onTimerEnd(); // Call the callback function to switch player turn
+        }       
+    }, 1000);
+}
+
+// Function to switch player turn
+function switchPlayerTurn() {
+    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
+    document.querySelector('.player-turn').textContent = `${currentPlayer} - It's your turn!`;
+    if (currentPlayer === 'player1' || currentPlayer === 'player2') {
+        document.getElementById('submitBtn').removeAttribute('disabled');
+        startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn); // Restart the timer
+    }
 }
