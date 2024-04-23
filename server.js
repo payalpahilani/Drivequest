@@ -36,39 +36,21 @@ app.post('/add-player', async (req, res) => {
 });
 
 // Fetch questions
-// app.get('/questions.html', async (req, res) => {
-//     const { level, skip, limit } = req.query;
-//     try {
-//         if (skip && limit) {
-//             const count = await Question.countDocuments({ level });
-//             const randomIndex = Math.max(0, Math.min(count - 1, parseInt(skip)));
-//             const question = await Question.findOne({ level }).skip(randomIndex).limit(parseInt(limit));
-//             res.json([question]);
-//         } else {
-//             const count = await Question.countDocuments({ level });
-//             res.json({ count });
-//         }
-//     } catch (error) {
-//         console.error('Error fetching question:', error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// });
-
-// Fetch questions
 app.get('/questions.html', async (req, res) => {
     const { level, skip, limit } = req.query;
     try {
-        const count = await Question.countDocuments({ level });
-        if (skip !== undefined && limit !== undefined) {
+        if (skip && limit) {
+            const count = await Question.countDocuments({ level });
             const randomIndex = Math.max(0, Math.min(count - 1, parseInt(skip)));
             const question = await Question.findOne({ level }).skip(randomIndex).limit(parseInt(limit));
             res.json([question]);
         } else {
+            const count = await Question.countDocuments({ level });
             res.json({ count });
         }
     } catch (error) {
         console.error('Error fetching question:', error);
-        res.status(500).json({ error: 'Internal Server Error', details: error.toString() });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
