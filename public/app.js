@@ -56,13 +56,13 @@ function loadQuestion(level, gridIndex) {
 
 function fetchQuestionFromBackend(level) {
     // Fetch count first
-    fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}`)
+    fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions?level=${level}`)
         .then(response => response.json())
         .then(data => {
             if (data.count && data.count > 0) {
                 const randomIndex = Math.floor(Math.random() * data.count);
                 // Fetch the actual question with `skip` and `limit`
-                return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
+                return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions?level=${level}&skip=${randomIndex}&limit=1`);
             } else {
                 throw new Error('No questions available');
             }
