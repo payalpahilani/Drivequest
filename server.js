@@ -38,7 +38,7 @@ app.post('/add-player', async (req, res) => {
 });
 
 // Fetch questions
-app.get('/questions.html', async (req, res) => {
+app.get('/questions', async (req, res) => {
     const { level, skip, limit } = req.query;
     try {
         if (skip && limit) {
