@@ -135,7 +135,7 @@ https://creativecommons.org/licenses/by/3.0/-->
         try {
             const playerName = localStorage.getItem(player + 'Name');
             console.log(`Fetching score for: ${playerName}`);
-            const response = await fetch(`http://localhost:3000/get-player-score?playerName=${playerName}`);
+            const response = await fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/get-player-score?playerName=${playerName}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch scores');
             }
