@@ -109,9 +109,6 @@ function selectOption(option, correctAnswerIndex) {
     currentCorrectAnswerIndex = correctAnswerIndex; // Update the current correct answer index
 }
 
-
-let currentPlayer = 'player1';
-
 // This function is triggered when a player submits an answer
 function submitAnswer() {
     var selectedOption = document.querySelector('.option.selected');
