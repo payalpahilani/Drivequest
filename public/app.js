@@ -77,7 +77,7 @@ function fetchQuestionFromBackend(level) {
             if (data && data.length > 0) {
                 const questionData = data[0];
                 localStorage.setItem('currentQuestion', JSON.stringify(questionData));
-                window.location.href = 'questions.html'; // Adjust this if needed
+                window.location.href = 'questions.html';
             } else {
                 console.error('No question data returned');
             }
