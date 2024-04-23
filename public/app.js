@@ -78,6 +78,85 @@ function fetchQuestionFromBackend(level) {
         });
 }
 
+function displayQuestion(questionData) {
+    const questionContainer = document.querySelector('.question');
+    questionContainer.textContent = questionData.question;
+    const optionsContainer = document.querySelector('.options-container');
+    optionsContainer.innerHTML = '';
+
+    if (Array.isArray(questionData.options) && questionData.options.length > 0) {
+        questionData.options.forEach((option, index) => {
+            const optionElement = document.createElement('div');
+            optionElement.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+            optionElement.classList.add('option');
+            optionElement.addEventListener('click', () => selectOption(optionElement, questionData.correctAnswerIndex));
+            optionsContainer.appendChild(optionElement);
+        });
+    } else {
+        console.error('No options available for the question');
+    }
+
+    currentCorrectAnswerIndex = questionData.correctAnswerIndex;
+    document.getElementById('submitBtn').removeAttribute('disabled');
+}
+
+function selectOption(option, correctAnswerIndex) {
+    var options = document.querySelectorAll('.option');
+    options.forEach(function(opt) {
+        opt.classList.remove('selected');
+    });
+    option.classList.add('selected');
+    currentCorrectAnswerIndex = correctAnswerIndex; // Update the current correct answer index
+}
+
+
+let currentPlayer = 'player1';
+
+// This function is triggered when a player submits an answer
+function submitAnswer() {
+    var selectedOption = document.querySelector('.option.selected');
+    if (!selectedOption) {
+        alert('Please select an option before submitting.');
+        return;
+    }
+    
+    var selectedOptionText = selectedOption.textContent;
+    var correctAnswer = document.querySelector('.options-container').children[currentCorrectAnswerIndex].textContent;
+    var feedbackText = '';
+    var points = 0;
+
+    if (selectedOptionText.trim() === correctAnswer.trim()) {
+        feedbackText = 'Correct! You earned 10 points.';
+        points = 10;
+        let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
+        answeredGrids.push(localStorage.getItem('currentGridIndex'));
+        localStorage.setItem('answeredGrids', JSON.stringify(answeredGrids));
+    } else {
+        feedbackText = 'Incorrect! You lost 5 points.';
+        points = -5;
+    }
+
+    updatePlayerScore(currentPlayer, points);
+
+    document.getElementById('answerFeedback').textContent = feedbackText;
+    // document.getElementById('scoreFeedback').textContent = `Current Score: ${currentPlayer === 'player1' ? player1Score : player2Score}`;
+    showModal();
+
+    resetGameForNextTurn();
+}
+
+window.onload = function () {
+    // Disable already answered grid items
+    let answeredGrids = JSON.parse(localStorage.getItem('answeredGrids') || '[]');
+    answeredGrids.forEach(function(index) {
+        let gridItem = document.querySelectorAll('.grid-item')[index];
+        if (gridItem) {
+            gridItem.onclick = null; // Remove the onclick event
+            gridItem.style.opacity = '0.5'; // Dim the grid item to indicate it's disabled
+        }
+    });
+};
+
 function updatePlayerScore(currentPlayer, points) {
     let playerName = currentPlayer === 'player1' ? localStorage.getItem('player1Name') : localStorage.getItem('player2Name');
     
@@ -110,86 +189,4 @@ function updatePlayerScore(currentPlayer, points) {
     .catch(error => {
         console.error('Error updating player score:', error);
     });
-}
-
-function resetGameForNextTurn() {
-    // Reset selections and switch players
-    var options = document.querySelectorAll('.option');
-    options.forEach(function(opt) {
-        opt.classList.remove('selected');
-    });
-    document.getElementById('submitBtn').setAttribute('disabled', 'false');
-
-    // Switch to the other player
-    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
-    document.querySelector('.player-turn').textContent = `${currentPlayer} - It's your turn!`;
-    if (currentPlayer === 'player1' || currentPlayer === 'player2') {
-        document.getElementById('submitBtn').removeAttribute('disabled');
-        startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn); // Restart the timer
-    }
-}
-
-function showModal() {
-    document.getElementById('feedbackModal').style.display = 'block';
-}
-
-function closeModal() {
-    const answerFeedback = document.getElementById('answerFeedback').textContent;
-    const pointsEarned = answerFeedback.includes('Correct') && answerFeedback.includes('10 points');
-    if (pointsEarned) {
-        window.location.href = 'grid.html';
-    } else {
-        document.getElementById('feedbackModal').style.display = 'none';
-    }
-}
-
-
-// countdown timer
-document.addEventListener('DOMContentLoaded', function() {
-    // Add event listener for the begin button
-    const beginBtn = document.getElementById('begin-btn');
-    if (beginBtn) {
-        beginBtn.addEventListener('click', submitPlayerInfo);
-    }
-
-    // Call the function to start the timer
-    startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn);
-});
-
-// Function to start the countdown timer
-
-function startTimer(duration, display, onTimerEnd) {
-    let timer = duration, minutes, seconds;
-    display.innerHTML = ''; // Clear the content of the display element
-    const timerDisplay = document.createElement('span'); // Create a span element
-    display.appendChild(timerDisplay); // Append the span to the display element
-
-    // Apply CSS styles to the timer span
-    timerDisplay.style.fontWeight = '700';
-    timerDisplay.style.fontSize = '2.2em';
-    timerDisplay.style.color = '#E4B228';
-
-    const intervalId = setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        timerDisplay.textContent = minutes + ":" + seconds;
-        if (--timer < 0) {
-            clearInterval(intervalId); // Clear the interval
-            alert("Time's up!");
-            timerDisplay.textContent = "00:00"; // Set timer display to 00:00
-            onTimerEnd(); // Call the callback function to switch player turn
-        }       
-    }, 1000);
-}
-
-// Function to switch player turn
-function switchPlayerTurn() {
-    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
-    document.querySelector('.player-turn').textContent = `${currentPlayer} - It's your turn!`;
-    if (currentPlayer === 'player1' || currentPlayer === 'player2') {
-        document.getElementById('submitBtn').removeAttribute('disabled');
-        startTimer(30, document.querySelector('#safeTimerDisplay'), switchPlayerTurn); // Restart the timer
-    }
 }
