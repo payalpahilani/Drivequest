@@ -54,19 +54,39 @@ function loadQuestion(level, gridIndex) {
     fetchQuestionFromBackend(level);
 }
 
+// function fetchQuestionFromBackend(level) {
+//     fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             const count = data.count;
+//             const randomIndex = Math.floor(Math.random() * count);
+//             return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.length > 0) {
+//                 const questionData = data[0];
+//                 console.log('Question data before storing:', questionData);
+//                 localStorage.setItem('currentQuestion', JSON.stringify(questionData));
+//                 window.location.href = 'questions.html'; // Redirect after storing the data
+//             } else {
+//                 console.error('No questions available for this level');
+//             }
+//         })
+//         .catch(error => {
+//             console.error('Error fetching question:', error);
+//         });
+// }
+
 function fetchQuestionFromBackend(level) {
     fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}`)
-        .then(response => response.json())
-        .then(data => {
-            const count = data.count;
-            const randomIndex = Math.floor(Math.random() * count);
-            return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
         })
-        .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
                 const questionData = data[0];
-                console.log('Question data before storing:', questionData);
                 localStorage.setItem('currentQuestion', JSON.stringify(questionData));
                 window.location.href = 'questions.html'; // Redirect after storing the data
             } else {
@@ -77,6 +97,8 @@ function fetchQuestionFromBackend(level) {
             console.error('Error fetching question:', error);
         });
 }
+
+
 
 function displayQuestion(questionData) {
     const questionContainer = document.querySelector('.question');
