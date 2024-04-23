@@ -55,28 +55,38 @@ function loadQuestion(level, gridIndex) {
 }
 
 function fetchQuestionFromBackend(level) {
+    // Fetch count first
     fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}`)
         .then(response => response.json())
         .then(data => {
-            const count = data.count;
-            const randomIndex = Math.floor(Math.random() * count);
-            return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.length > 0) {
-                const questionData = data[0];
-                console.log('Question data before storing:', questionData);
-                localStorage.setItem('currentQuestion', JSON.stringify(questionData));
-                window.location.href = 'https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html'; // Redirect after storing the data
+            if (data.count && data.count > 0) {
+                const randomIndex = Math.floor(Math.random() * data.count);
+                // Fetch the actual question with `skip` and `limit`
+                return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
             } else {
-                console.error('No questions available for this level');
+                throw new Error('No questions available');
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Response not OK');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.length > 0) {
+                const questionData = data[0];
+                localStorage.setItem('currentQuestion', JSON.stringify(questionData));
+                window.location.href = 'questions.html'; // Adjust this if needed
+            } else {
+                console.error('No question data returned');
             }
         })
         .catch(error => {
             console.error('Error fetching question:', error);
         });
 }
+
 
 function displayQuestion(questionData) {
     const questionContainer = document.querySelector('.question');
