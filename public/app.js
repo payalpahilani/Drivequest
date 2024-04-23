@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const beginBtn = document.getElementById('begin-btn');
     if (beginBtn) {
-        beginBtn.addEventListener('click', submitPlayerInfo);
+        beginBtn.addEventListener('click', function(event) {
+            submitPlayerInfo(event);
+        });
     }
-}); 
+});
 
 function submitPlayerInfo(event) {
     event.preventDefault();  // Prevent any default form submission
@@ -14,11 +16,9 @@ function submitPlayerInfo(event) {
     localStorage.setItem('player1Name', player1Name);
     localStorage.setItem('player2Name', player2Name);
 
-    // Initialize player scores to zero
     localStorage.setItem('player1Score', '0');
     localStorage.setItem('player2Score', '0');
 
-    // Submit player information and proceed to the game grid
     submitPlayer(player1Name, 1)
         .then(() => submitPlayer(player2Name, 2))
         .then(() => {
@@ -29,17 +29,16 @@ function submitPlayerInfo(event) {
         });
 }
 
-
-
 function submitPlayer(name, number) {
-    return fetch('http://localhost:3000/add-player', {
+    const apiUrl = 'https://drivequest-bdcd0e241c4b.herokuapp.com/add-player';
+    return fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ playerName: name, playerNumber: number, scores: [] })
     })
     .then(response => {
         if (!response.ok) throw new Error(`Failed to save player ${number} info`);
-        return response.json();  // Assuming the server responds with JSON
+        return response.json();
     })
     .then(data => {
         console.log(`Player ${number} added:`, data);
@@ -55,13 +54,13 @@ function loadQuestion(level, gridIndex) {
 
 function fetchQuestionFromBackend(level) {
     // First, fetch the count of questions for the specified level
-    fetch(`http://localhost:3000/questions.html?level=${level}`)
+    fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}`)
         .then(response => response.json())
         .then(data => {
             const count = data.count;
             const randomIndex = Math.floor(Math.random() * count);
             // Then, fetch a random question using the random index
-            return fetch(`http://localhost:3000/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
+            return fetch(`https://drivequest-bdcd0e241c4b.herokuapp.com/questions.html?level=${level}&skip=${randomIndex}&limit=1`);
         })
         .then(response => response.json())
         .then(data => {
@@ -164,7 +163,7 @@ window.onload = function () {
 function updatePlayerScore(currentPlayer, points) {
     let playerName = currentPlayer === 'player1' ? localStorage.getItem('player1Name') : localStorage.getItem('player2Name');
     
-    fetch('http://localhost:3000/update-score', {
+    fetch('https://drivequest-bdcd0e241c4b.herokuapp.com/update-score', {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
